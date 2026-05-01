@@ -1,0 +1,5 @@
+.DS_Store
+*.napkin
+**/.deploy_key_ed25519
+.deploy_key_ed25519
+.deploy_key_ed25519.pub
