@@ -1,4 +1,16 @@
-# Structure
-- index ist das Html der Website
-- scraps ist der sketch von den verweisen innerhalb der 4-page-website
-- uploads sind die Bilder und Videos die auf der Website zu sehen sind
+# Strandbad Utting am Ammersee
+
+Statische Website (ein `index.html`, Assets unter `assets/`).
+
+## Lokal öffnen
+
+```bash
+python3 -m http.server 8765
+```
+
+Dann `http://localhost:8765/`
+
+## Vercel / Hosting
+
+Projekt als **Static Site**, kein Build. Root-Verzeichnis: Repository-Root (`.`).
+

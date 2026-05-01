@@ -3,88 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Segelschule Marx – Utting am Ammersee</title>
+  <title>Strandbad Utting am Ammersee – Baden, Sprungturm &amp; Biergarten</title>
+  <meta name="description" content="Freibad mit 10‑Meter‑Sprungturm und Biergarten direkt am Ammersee. Sommerkarte, Öffnungszeiten, Anfahrt – Strandbad Utting in Utting, Bayern.">
+  <link rel="icon" href="assets/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/favicon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #0d2137;
-      --navy-mid: #163352;
-      --ocean: #1a4f7a;
-      --sky: #2e7fb8;
-      --water: #4aacde;
-      --sand: #f5ede0;
-      --amber: #c8922a;
-      --amber-light: #e8b94a;
+      --night: #0c1f2a;
+      --deep: #133546;
+      --sea: #1f5d75;
+      --water: #4ea3bf;
+      --sky: #8fc8d8;
+      --sun: #d49744;
+      --sun-light: #efb86a;
+      --sand: #f3ebda;
+      --paper: #f9f5ec;
       --white: #ffffff;
-      --off-white: #f8f4ef;
-      --text: #1a2635;
-      --text-light: #5a6a7a;
-      --radius: 2px;
+      --text: #18242c;
+      --text-soft: #586672;
+      --line: #e6dfcf;
+      --radius: 4px;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--off-white);
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      background: var(--paper);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
+    img { max-width: 100%; display: block; }
+    a { color: var(--sea); }
+
     /* ── NAV ── */
-    nav {
+    nav#mainNav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 48px;
+      padding: 0 clamp(20px, 4vw, 48px);
       height: 72px;
       background: transparent;
-      transition: background 0.4s, box-shadow 0.4s;
+      transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
     }
-    nav.scrolled {
-      background: rgba(13,33,55,0.97);
-      box-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    nav#mainNav.scrolled {
+      background: rgba(12, 31, 42, 0.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.25);
     }
     .nav-logo {
       display: flex;
       align-items: center;
       gap: 12px;
-      text-decoration: none;
       cursor: pointer;
+      text-decoration: none;
     }
     .nav-logo img {
-      height: 44px;
-      width: auto;
+      height: 44px; width: auto;
+      filter: brightness(0) invert(1);
     }
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
     .nav-logo-text .brand {
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 700;
       color: var(--white);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
     }
     .nav-logo-text .sub {
       font-size: 11px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.6);
-      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
     .nav-links {
       display: flex;
-      gap: 8px;
+      align-items: center;
+      gap: 4px;
       list-style: none;
     }
     .nav-links a {
@@ -92,119 +96,124 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
-      letter-spacing: 0.06em;
-      padding: 8px 16px;
+      letter-spacing: 0.04em;
+      padding: 9px 16px;
       border-radius: 3px;
       transition: color 0.2s, background 0.2s;
+      cursor: pointer;
     }
-    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
-    .nav-links a.active { color: var(--amber-light); }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+    .nav-links a.active { color: var(--sun-light); }
     .nav-cta {
-      background: var(--amber);
+      background: var(--sun);
       color: var(--white) !important;
       padding: 9px 20px !important;
       border-radius: 3px !important;
     }
-    .nav-cta:hover { background: var(--amber-light) !important; color: var(--navy) !important; }
+    .nav-cta:hover { background: var(--sun-light) !important; color: var(--night) !important; }
+    .nav-burger {
+      display: none;
+      background: none;
+      border: 0;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      padding: 0;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 5px auto;
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
 
     /* ── PAGES ── */
     .page { display: none; }
     .page.active { display: block; }
 
-    /* ── HERO ── */
+    /* ── HERO (home) ── */
     .hero {
       position: relative;
       height: 100vh;
-      min-height: 600px;
+      min-height: 620px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+    .hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
+      object-position: center 40%;
     }
     .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(13,33,55,0.72) 0%,
-        rgba(13,33,55,0.45) 50%,
-        rgba(13,33,55,0.68) 100%
-      );
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(170deg, rgba(12,31,42,0.55) 0%, rgba(12,31,42,0.35) 45%, rgba(12,31,42,0.78) 100%);
     }
     .hero-content {
-      position: relative;
-      z-index: 2;
+      position: relative; z-index: 2;
       text-align: center;
       color: var(--white);
       padding: 0 24px;
-      max-width: 860px;
+      max-width: 920px;
     }
     .hero-eyebrow {
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--amber-light);
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.3s forwards;
+      color: var(--sun-light);
+      margin-bottom: 22px;
+      opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
     }
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(42px, 7vw, 88px);
+      font-size: clamp(44px, 7vw, 92px);
       font-weight: 900;
       line-height: 1.0;
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.5s forwards;
+      margin-bottom: 26px;
+      opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
     }
-    .hero-title em { font-style: italic; color: var(--amber-light); }
+    .hero-title em { font-style: italic; color: var(--sky); }
     .hero-subtitle {
-      font-size: clamp(16px, 2vw, 20px);
+      font-size: clamp(16px, 1.8vw, 19px);
       font-weight: 300;
-      color: rgba(255,255,255,0.82);
-      margin-bottom: 48px;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
+      color: rgba(255,255,255,0.85);
+      max-width: 580px;
+      margin: 0 auto 44px;
       line-height: 1.7;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.7s forwards;
+      opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
     }
     .hero-cards {
-      display: flex;
-      gap: 16px;
+      display: flex; gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.9s forwards;
+      opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
     }
     .hero-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      backdrop-filter: blur(12px);
-      padding: 20px 28px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(10px);
+      padding: 18px 26px;
       border-radius: 4px;
       cursor: pointer;
       transition: background 0.2s, border-color 0.2s, transform 0.2s;
       text-align: center;
-      min-width: 160px;
+      min-width: 152px;
     }
     .hero-card:hover {
-      background: rgba(200,146,42,0.25);
-      border-color: var(--amber);
+      background: rgba(212,151,68,0.22);
+      border-color: var(--sun);
       transform: translateY(-3px);
     }
-    .hero-card-icon { font-size: 28px; margin-bottom: 8px; }
+    .hero-card-icon { font-size: 26px; margin-bottom: 6px; }
     .hero-card-label {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -212,28 +221,20 @@
     }
     .hero-scroll {
       position: absolute;
-      bottom: 40px;
-      left: 50%;
+      bottom: 38px; left: 50%;
       transform: translateX(-50%);
       z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.5);
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.55);
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
       animation: bounce 2s infinite;
     }
     .hero-scroll::after {
       content: '';
       display: block;
-      width: 1px;
-      height: 40px;
-      background: rgba(255,255,255,0.3);
+      width: 1px; height: 38px;
+      background: rgba(255,255,255,0.35);
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
@@ -243,150 +244,190 @@
       50% { transform: translateX(-50%) translateY(6px); }
     }
 
-    /* ── TRUST BAR ── */
-    .trust-bar {
-      background: var(--navy);
+    /* ── STATUS / TRUST BAR ── */
+    .status-bar {
+      background: var(--night);
       color: var(--white);
-      padding: 28px 48px;
+      padding: 30px 24px;
       display: flex;
-      gap: 0;
       justify-content: center;
-      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
     }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 0 40px;
+    .status-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 6px 36px;
       border-right: 1px solid rgba(255,255,255,0.1);
     }
-    .trust-item:last-child { border-right: none; }
-    .trust-num {
+    .status-item:last-child { border-right: none; }
+    .status-num {
       font-family: 'Playfair Display', serif;
       font-size: 36px;
       font-weight: 900;
-      color: var(--amber-light);
+      color: var(--sun-light);
       line-height: 1;
     }
-    .trust-label {
+    .status-label {
       font-size: 13px;
-      font-weight: 400;
       color: rgba(255,255,255,0.65);
       line-height: 1.4;
     }
-    .trust-label strong {
+    .status-label strong {
       display: block;
       color: var(--white);
       font-weight: 600;
       font-size: 14px;
     }
 
-    /* ── SECTIONS ── */
+    /* ── SECTION SHARED ── */
     section {
-      padding: 96px 48px;
+      padding: clamp(64px, 9vw, 104px) clamp(24px, 4vw, 48px);
     }
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-eyebrow {
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--amber);
+      color: var(--sun);
       margin-bottom: 12px;
     }
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
+      font-size: clamp(32px, 4.4vw, 54px);
       font-weight: 700;
-      color: var(--navy);
-      line-height: 1.15;
+      color: var(--night);
+      line-height: 1.12;
       margin-bottom: 20px;
     }
-    .section-title em { font-style: italic; color: var(--sky); }
+    .section-title em { font-style: italic; color: var(--sea); }
     .section-lead {
       font-size: 18px;
       font-weight: 300;
-      color: var(--text-light);
-      max-width: 620px;
+      color: var(--text-soft);
+      max-width: 640px;
       line-height: 1.8;
       margin-bottom: 56px;
     }
 
-    /* ── ABOUT SECTION ── */
+    /* ── HOURS PANEL ── */
+    .hours-section { background: var(--paper); }
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .hours-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 28px 28px 30px;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 18px rgba(12,31,42,0.04);
+      position: relative;
+    }
+    .hours-card .hours-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sun);
+      margin-bottom: 10px;
+    }
+    .hours-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--night);
+      margin-bottom: 14px;
+    }
+    .hours-card .hours-line {
+      display: flex; justify-content: space-between;
+      gap: 16px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--text);
+    }
+    .hours-card .hours-line:last-child { border-bottom: none; }
+    .hours-card .hours-line span:last-child { font-weight: 600; color: var(--sea); }
+    .hours-note {
+      background: linear-gradient(120deg, rgba(212,151,68,0.10) 0%, rgba(212,151,68,0.04) 100%);
+      border-left: 3px solid var(--sun);
+      padding: 18px 22px;
+      border-radius: 3px;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+    .hours-note strong { color: var(--text); }
+
+    /* ── ABOUT ── */
+    .about-section { background: var(--paper); }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: clamp(40px, 6vw, 80px);
       align-items: center;
     }
-    .about-img {
-      position: relative;
-    }
+    .about-img { position: relative; }
     .about-img img {
-      width: 100%;
-      height: 480px;
+      width: 100%; height: 520px;
       object-fit: cover;
       border-radius: 4px;
     }
     .about-img-badge {
       position: absolute;
-      bottom: -24px;
-      right: -24px;
-      background: var(--navy);
+      bottom: -22px; right: -22px;
+      background: var(--night);
       color: var(--white);
-      padding: 24px 28px;
+      padding: 22px 28px;
       border-radius: 4px;
       text-align: center;
+      box-shadow: 0 8px 30px rgba(12,31,42,0.25);
     }
     .about-img-badge .year {
       font-family: 'Playfair Display', serif;
       font-size: 42px;
       font-weight: 900;
-      color: var(--amber-light);
+      color: var(--sun-light);
       line-height: 1;
     }
     .about-img-badge .year-label {
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.65);
       text-transform: uppercase;
-      margin-top: 4px;
+      margin-top: 6px;
     }
     .about-text p {
       font-size: 16px;
       line-height: 1.85;
-      color: var(--text-light);
-      margin-bottom: 20px;
+      color: var(--text-soft);
+      margin-bottom: 18px;
     }
     .about-text p strong { color: var(--text); }
     .about-features {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 32px;
+      display: flex; flex-direction: column;
+      gap: 10px;
+      margin-top: 28px;
     }
     .about-feature {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 12px;
       font-size: 15px;
       color: var(--text);
     }
     .about-feature::before {
       content: '';
-      width: 20px;
-      height: 2px;
-      background: var(--amber);
+      width: 22px; height: 2px;
+      background: var(--sun);
       flex-shrink: 0;
     }
 
-    /* ── OFFER CARDS (home) ── */
-    .offer-section { background: var(--navy); }
+    /* ── OFFER (3 photo cards) ── */
+    .offer-section { background: var(--night); }
     .offer-section .section-title { color: var(--white); }
-    .offer-section .section-lead { color: rgba(255,255,255,0.55); }
+    .offer-section .section-title em { color: var(--sky); }
+    .offer-section .section-lead { color: rgba(255,255,255,0.6); }
     .offers-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -399,31 +440,28 @@
       aspect-ratio: 3/4;
     }
     .offer-card img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
-      transition: transform 0.5s;
+      transition: transform 0.6s ease;
     }
-    .offer-card:hover img { transform: scale(1.05); }
+    .offer-card:hover img { transform: scale(1.06); }
     .offer-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(13,33,55,0.9) 0%, rgba(13,33,55,0.2) 60%, transparent 100%);
-      display: flex;
-      flex-direction: column;
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,31,42,0.92) 0%, rgba(12,31,42,0.25) 60%, transparent 100%);
+      display: flex; flex-direction: column;
       justify-content: flex-end;
       padding: 32px;
       transition: background 0.3s;
     }
     .offer-card:hover .offer-card-overlay {
-      background: linear-gradient(to top, rgba(13,33,55,0.95) 0%, rgba(13,33,55,0.4) 60%, rgba(13,33,55,0.1) 100%);
+      background: linear-gradient(to top, rgba(12,31,42,0.95) 0%, rgba(12,31,42,0.45) 60%, rgba(12,31,42,0.1) 100%);
     }
     .offer-card-tag {
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--amber-light);
+      color: var(--sun-light);
       margin-bottom: 8px;
     }
     .offer-card-title {
@@ -436,23 +474,21 @@
     }
     .offer-card-desc {
       font-size: 13px;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.7);
       line-height: 1.6;
       margin-bottom: 16px;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s;
     }
-    .offer-card:hover .offer-card-desc { max-height: 80px; }
+    .offer-card:hover .offer-card-desc { max-height: 100px; }
     .offer-card-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-flex; align-items: center; gap: 6px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--amber-light);
+      color: var(--sun-light);
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 0.3s, transform 0.3s;
@@ -460,40 +496,93 @@
     .offer-card:hover .offer-card-cta { opacity: 1; transform: none; }
     .offer-card-cta::after { content: '→'; }
 
-    /* ── PAGE HERO (inner pages) ── */
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px;
+      border-radius: 3px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--sun); color: var(--white); }
+    .btn-primary:hover { background: #b9802c; }
+    .btn-outline {
+      background: transparent;
+      color: var(--night);
+      border: 1.5px solid var(--night);
+    }
+    .btn-outline:hover { background: var(--night); color: var(--white); }
+    .btn-white { background: var(--white); color: var(--night); font-weight: 700; }
+    .btn-white:hover { background: var(--sand); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.4);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+    .btn-full { width: 100%; justify-content: center; }
+
+    /* ── BAND STORY (history teaser) ── */
+    .band-section {
+      background: var(--deep);
+      color: rgba(255,255,255,0.85);
+    }
+    .band-section .section-title { color: var(--white); }
+    .band-section .section-title em { color: var(--sky); }
+    .band-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+    }
+    .band-grid img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .band-section p {
+      font-size: 16px; line-height: 1.85;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 20px;
+    }
+
+    /* ── PAGE HEROES ── */
     .page-hero {
       height: 380px;
       position: relative;
       overflow: hidden;
       display: flex;
       align-items: flex-end;
-      padding: 56px 48px;
+      padding: 56px clamp(24px, 4vw, 48px);
     }
     .page-hero img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
     }
     .page-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(13,33,55,0.88) 0%, rgba(13,33,55,0.4) 60%, rgba(13,33,55,0.2) 100%);
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,31,42,0.9) 0%, rgba(12,31,42,0.45) 60%, rgba(12,31,42,0.2) 100%);
     }
     .page-hero-content {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       max-width: 1200px;
       width: 100%;
       margin: 0 auto;
     }
     .page-hero-eyebrow {
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--amber-light);
+      color: var(--sun-light);
       margin-bottom: 10px;
     }
     .page-hero-title {
@@ -507,423 +596,350 @@
 
     /* ── TABS ── */
     .tabs-nav {
-      background: var(--navy);
+      background: var(--night);
       position: sticky;
       top: 72px;
       z-index: 50;
-      box-shadow: 0 4px 20px rgba(13,33,55,0.25);
+      box-shadow: 0 4px 20px rgba(12,31,42,0.25);
     }
     .tabs-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 48px;
+      padding: 0 clamp(20px, 4vw, 48px);
       display: flex;
       gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
+    .tabs-inner::-webkit-scrollbar { display: none; }
     .tab-btn {
       background: none;
       border: none;
-      padding: 22px 36px;
+      padding: 22px 32px;
       font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.5);
       cursor: pointer;
       position: relative;
       transition: color 0.2s, background 0.2s;
-      border-radius: 0;
+      white-space: nowrap;
     }
     .tab-btn::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 3px;
-      background: var(--amber);
+      background: var(--sun);
       transform: scaleX(0);
       transition: transform 0.25s;
     }
-    .tab-btn:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.05); }
-    .tab-btn.active {
-      color: var(--white);
-      background: rgba(255,255,255,0.08);
-    }
+    .tab-btn:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.05); }
+    .tab-btn.active { color: var(--white); background: rgba(255,255,255,0.08); }
     .tab-btn.active::after { transform: scaleX(1); }
-
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* ── COURSE CARDS ── */
-    .course-grid {
+    /* ── MENU CARDS (Sommerkarte) ── */
+    .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 32px;
-      margin-top: 48px;
+      margin-top: 24px;
     }
-    .course-card {
+    .menu-card {
       background: var(--white);
       border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 2px 16px rgba(13,33,55,0.08);
-      transition: box-shadow 0.2s, transform 0.2s;
+      padding: 36px 32px 32px;
+      box-shadow: 0 2px 18px rgba(12,31,42,0.06);
+      border: 1px solid var(--line);
     }
-    .course-card:hover {
-      box-shadow: 0 8px 40px rgba(13,33,55,0.15);
-      transform: translateY(-4px);
-    }
-    .course-card-img {
-      height: 200px;
-      overflow: hidden;
-    }
-    .course-card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-    .course-card:hover .course-card-img img { transform: scale(1.04); }
-    .course-card-body { padding: 28px 28px 32px; }
-    .course-card-tag {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 8px;
-    }
-    .course-card-title {
+    .menu-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 12px;
-      line-height: 1.2;
+      color: var(--night);
+      margin-bottom: 6px;
     }
-    .course-card-desc {
-      font-size: 14px;
-      line-height: 1.75;
-      color: var(--text-light);
-      margin-bottom: 20px;
-    }
-    .course-card-price {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      margin-bottom: 20px;
-    }
-    .price-main {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--navy);
-    }
-    .price-unit {
-      font-size: 13px;
-      color: var(--text-light);
-    }
-    .course-card-features {
-      list-style: none;
-      margin-bottom: 24px;
-    }
-    .course-card-features li {
-      font-size: 13px;
-      color: var(--text-light);
-      padding: 5px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid #f0f2f5;
-    }
-    .course-card-features li:last-child { border-bottom: none; }
-    .course-card-features li::before {
-      content: '✓';
-      color: var(--sky);
-      font-weight: 700;
+    .menu-card .menu-sub {
       font-size: 12px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 3px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: all 0.2s;
-    }
-    .btn-primary {
-      background: var(--amber);
-      color: var(--white);
-    }
-    .btn-primary:hover { background: #b5821f; }
-    .btn-outline {
-      background: transparent;
-      color: var(--navy);
-      border: 1.5px solid var(--navy);
-    }
-    .btn-outline:hover { background: var(--navy); color: var(--white); }
-    .btn-full { width: 100%; justify-content: center; }
-
-    /* ── PRICING TABLES ── */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-    }
-    .pricing-card {
-      background: var(--white);
-      border-radius: 4px;
-      padding: 36px 32px;
-      box-shadow: 0 2px 16px rgba(13,33,55,0.07);
-      position: relative;
-      border: 2px solid transparent;
-      transition: border-color 0.2s;
-    }
-    .pricing-card:hover { border-color: var(--amber); }
-    .pricing-card.featured {
-      background: var(--navy);
-      color: var(--white);
-      border-color: var(--amber);
-    }
-    .pricing-featured-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--amber);
-      color: var(--white);
-      font-size: 10px;
-      font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 20px;
+      color: var(--sun);
+      font-weight: 700;
+      margin-bottom: 22px;
     }
-    .pricing-name {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--amber);
+    .menu-list { list-style: none; }
+    .menu-list li {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(12,31,42,0.10);
+    }
+    .menu-list li:last-child { border-bottom: none; }
+    .menu-list li .name {
+      flex: 1;
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .menu-list li .desc {
+      display: block;
+      font-size: 12.5px;
+      color: var(--text-soft);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .menu-list li .price {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--sea);
+      flex-shrink: 0;
+    }
+    .menu-meta {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 12.5px;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+    .menu-banner {
+      background: linear-gradient(135deg, var(--sea) 0%, var(--deep) 100%);
+      color: var(--white);
+      padding: 32px 36px;
+      border-radius: 4px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .menu-banner-text { flex: 1; min-width: 240px; }
+    .menu-banner-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .menu-banner-text p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.78);
+    }
+
+    /* ── INFO STRIPS / FAQ ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .info-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      box-shadow: 0 1px 8px rgba(12,31,42,0.04);
+    }
+    .info-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--night);
       margin-bottom: 8px;
     }
-    .pricing-card.featured .pricing-name { color: var(--amber-light); }
-    .pricing-price {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      font-weight: 900;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .pricing-card.featured .pricing-price { color: var(--white); }
-    .pricing-period { font-size: 13px; color: var(--text-light); margin-bottom: 24px; }
-    .pricing-card.featured .pricing-period { color: rgba(255,255,255,0.55); }
-    .pricing-divider {
-      height: 1px;
-      background: #e8ecf0;
-      margin-bottom: 24px;
-    }
-    .pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.1); }
-    .pricing-features { list-style: none; margin-bottom: 32px; }
-    .pricing-features li {
+    .info-card p {
       font-size: 14px;
-      color: var(--text-light);
-      padding: 8px 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      border-bottom: 1px solid #f5f7fa;
-      line-height: 1.5;
+      color: var(--text-soft);
+      line-height: 1.65;
     }
-    .pricing-card.featured .pricing-features li {
-      color: rgba(255,255,255,0.7);
-      border-bottom-color: rgba(255,255,255,0.06);
+    details.faq {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 18px 24px;
+      margin-bottom: 10px;
+      transition: box-shadow 0.2s;
     }
-    .pricing-features li:last-child { border-bottom: none; }
-    .pricing-features li::before {
-      content: '—';
-      color: var(--amber);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
+    details.faq[open] { box-shadow: 0 4px 18px rgba(12,31,42,0.06); }
+    details.faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--night);
+      list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+    }
+    details.faq summary::-webkit-details-marker { display: none; }
+    details.faq summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--sun);
+      transition: transform 0.2s;
+    }
+    details.faq[open] summary::after { transform: rotate(45deg); }
+    details.faq p {
+      margin-top: 12px;
+      color: var(--text-soft);
+      font-size: 14.5px;
+      line-height: 1.7;
     }
 
-    /* ── RENTAL TABLE ── */
-    .rental-section { background: var(--sand); }
-    .rental-table-wrap {
-      overflow-x: auto;
-      margin-top: 48px;
-      border-radius: 4px;
-      box-shadow: 0 2px 20px rgba(13,33,55,0.08);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--white);
-      font-size: 14px;
-    }
-    thead { background: var(--navy); color: var(--white); }
-    thead th {
-      padding: 18px 24px;
-      text-align: left;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-    }
-    thead th:first-child { color: var(--white); }
-    tbody tr { border-bottom: 1px solid #f0f3f6; }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: var(--sand); }
-    tbody td { padding: 16px 24px; color: var(--text); }
-    tbody td:first-child { font-weight: 600; color: var(--navy); }
-    .price-cell {
-      font-weight: 600;
-      color: var(--ocean);
-    }
-    .rental-info {
+    /* ── GALLERY ── */
+    .gallery-section { background: var(--white); }
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 32px;
     }
-    .rental-info-card {
-      background: var(--white);
+    .gallery-grid figure {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+    .gallery-grid figure.tall { aspect-ratio: 1 / 1.5; grid-row: span 2; }
+    .gallery-grid img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .gallery-grid figure:hover img { transform: scale(1.05); }
+
+    /* ── EVENT CARD (light) ── */
+    .event-strip {
+      background: linear-gradient(120deg, var(--sun) 0%, var(--sun-light) 100%);
+      color: var(--night);
+      padding: 36px clamp(24px, 4vw, 48px);
+    }
+    .event-strip-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+    .event-strip img {
+      width: 100px; height: 100px; object-fit: cover;
       border-radius: 4px;
-      padding: 24px;
-      box-shadow: 0 1px 8px rgba(13,33,55,0.06);
+      border: 2px solid rgba(0,0,0,0.08);
     }
-    .rental-info-card h4 {
+    .event-strip h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 16px;
+      font-size: 24px;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
     }
-    .rental-info-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+    .event-strip p {
+      font-size: 14px;
+      color: rgba(12,31,42,0.78);
+    }
 
     /* ── KONTAKT ── */
     .kontakt-grid {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
-      gap: 64px;
+      gap: clamp(40px, 6vw, 80px);
       align-items: start;
     }
-    .kontakt-info { display: flex; flex-direction: column; gap: 32px; }
-    .kontakt-item {
-      display: flex;
-      gap: 20px;
-    }
+    .kontakt-info { display: flex; flex-direction: column; gap: 28px; }
+    .kontakt-item { display: flex; gap: 18px; }
     .kontakt-icon {
-      width: 48px;
-      height: 48px;
+      width: 48px; height: 48px;
       border-radius: 4px;
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: var(--night);
+      color: var(--white);
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       font-size: 20px;
     }
     .kontakt-item-text h4 {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--amber);
+      color: var(--sun);
       margin-bottom: 6px;
     }
-    .kontakt-item-text p {
-      font-size: 15px;
-      color: var(--text);
-      line-height: 1.7;
-    }
+    .kontakt-item-text p { font-size: 15px; color: var(--text); line-height: 1.7; }
     .kontakt-item-text a {
-      color: var(--sky);
+      color: var(--sea);
       text-decoration: none;
     }
     .kontakt-item-text a:hover { text-decoration: underline; }
     .kontakt-map {
       border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 4px 24px rgba(13,33,55,0.12);
+      box-shadow: 0 4px 24px rgba(12,31,42,0.12);
     }
     .kontakt-map iframe {
-      width: 100%;
-      height: 480px;
-      border: none;
-      display: block;
+      width: 100%; height: 480px;
+      border: none; display: block;
     }
     .contact-form {
       background: var(--white);
       border-radius: 4px;
-      padding: 40px;
-      box-shadow: 0 2px 20px rgba(13,33,55,0.08);
+      padding: 36px;
+      box-shadow: 0 2px 20px rgba(12,31,42,0.08);
+      border: 1px solid var(--line);
     }
     .contact-form h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 24px;
+      color: var(--night);
+      margin-bottom: 22px;
     }
-    .form-group { margin-bottom: 20px; }
+    .form-group { margin-bottom: 18px; }
     .form-group label {
       display: block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 8px;
+      color: var(--text-soft);
+      margin-bottom: 7px;
     }
     .form-group input,
     .form-group textarea,
     .form-group select {
       width: 100%;
-      padding: 12px 16px;
-      border: 1.5px solid #dde2ea;
+      padding: 11px 14px;
+      border: 1.5px solid var(--line);
       border-radius: 3px;
       font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       color: var(--text);
-      background: var(--off-white);
-      transition: border-color 0.2s;
+      background: var(--paper);
+      transition: border-color 0.2s, background 0.2s;
       outline: none;
     }
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      border-color: var(--sky);
+      border-color: var(--sea);
       background: var(--white);
     }
-    .form-group textarea { min-height: 120px; resize: vertical; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--navy);
+      background: var(--night);
       color: rgba(255,255,255,0.6);
-      padding: 56px 48px 32px;
+      padding: 56px clamp(24px, 4vw, 48px) 28px;
     }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
       gap: 48px;
-      margin-bottom: 48px;
-      padding-bottom: 48px;
+      padding-bottom: 40px;
+      margin-bottom: 32px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .footer-brand .brand-name {
@@ -935,7 +951,7 @@
     }
     .footer-brand .brand-sub {
       font-size: 12px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       color: rgba(255,255,255,0.4);
       text-transform: uppercase;
       margin-bottom: 16px;
@@ -947,15 +963,15 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--white);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
     .footer-col ul li a {
       color: rgba(255,255,255,0.55);
       text-decoration: none;
       font-size: 13px;
-      transition: color 0.2s;
       cursor: pointer;
+      transition: color 0.2s;
     }
     .footer-col ul li a:hover { color: var(--white); }
     .footer-bottom {
@@ -963,116 +979,108 @@
       justify-content: space-between;
       align-items: center;
       font-size: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
     .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
     .footer-bottom a:hover { color: var(--white); }
 
-    /* ── WAVE DIVIDER ── */
-    .wave-divider {
-      width: 100%;
-      overflow: hidden;
-      line-height: 0;
-    }
-    .wave-divider svg {
-      display: block;
-      width: 100%;
-      height: 60px;
-    }
-
-    /* ── ABOUT SECTION ── */
-    .about-section { background: var(--off-white); }
-
-    /* ── UTILS ── */
-    .text-center { text-align: center; }
-    .mt-8 { margin-top: 8px; }
-    .mt-16 { margin-top: 16px; }
-    .mt-32 { margin-top: 32px; }
-    .mb-0 { margin-bottom: 0; }
-    .whatsapp-float {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 200;
-      background: #25d366;
-      color: white;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
-      cursor: pointer;
-      font-size: 28px;
-      transition: transform 0.2s;
-      text-decoration: none;
-    }
-    .whatsapp-float:hover { transform: scale(1.1); }
-
-    /* ── SEASONS BANNER ── */
-    .seasons-banner {
-      background: linear-gradient(135deg, var(--ocean) 0%, var(--navy) 100%);
-      padding: 56px 48px;
+    /* ── CTA Banner ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--sea) 0%, var(--night) 100%);
+      padding: 56px clamp(24px, 4vw, 48px);
       text-align: center;
       color: var(--white);
     }
-    .seasons-banner h3 {
+    .cta-banner h3 {
       font-family: 'Playfair Display', serif;
       font-size: 36px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-    .seasons-banner p {
+    .cta-banner p {
       font-size: 16px;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 32px;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 28px;
     }
-    .seasons-btns {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+    .cta-btns {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
     }
-    .btn-white {
-      background: var(--white);
-      color: var(--navy);
-      font-weight: 700;
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 980px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img img { height: 380px; }
+      .band-grid { grid-template-columns: 1fr; }
+      .kontakt-grid { grid-template-columns: 1fr; }
+      .offers-grid { grid-template-columns: 1fr; }
+      .offer-card { aspect-ratio: 16/9; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .event-strip-inner { grid-template-columns: 80px 1fr; }
+      .event-strip a { grid-column: 1 / -1; justify-self: start; }
     }
-    .btn-white:hover { background: var(--sand); }
-    .btn-ghost {
-      background: transparent;
-      color: var(--white);
-      border: 1.5px solid rgba(255,255,255,0.4);
+    @media (max-width: 720px) {
+      nav#mainNav { padding: 0 18px; height: 64px; }
+      nav#mainNav .nav-burger { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 64px; right: 0;
+        background: rgba(12,31,42,0.98);
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+        padding: 18px 18px 28px;
+        gap: 4px;
+        width: 80%; max-width: 320px;
+        height: calc(100vh - 64px);
+        transform: translateX(100%);
+        transition: transform 0.3s;
+        align-items: stretch;
+      }
+      nav#mainNav.open .nav-links { transform: translateX(0); }
+      .nav-links a {
+        padding: 14px 16px;
+        font-size: 16px;
+        border-radius: 3px;
+      }
+      .nav-cta { margin-top: 8px; text-align: center; }
+      .hero { min-height: 580px; }
+      .status-bar { flex-direction: column; padding: 20px 16px; }
+      .status-item { padding: 14px 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .status-item:last-child { border-bottom: none; }
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid figure.tall { grid-row: span 1; aspect-ratio: 1; }
+      .menu-banner { flex-direction: column; align-items: flex-start; }
+      .tabs-nav { top: 64px; }
+      .tab-btn { padding: 18px 22px; font-size: 14px; }
     }
-    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
   </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- ─────────── NAV ─────────── -->
 <nav id="mainNav">
-  <div class="nav-logo" onclick="showPage('home')">
-    <img src="uploads/MarxProspekt2026_Icon150.jpg" alt="Wassersport Marx Logo">
+  <a class="nav-logo" onclick="showPage('home')">
+    <img src="assets/logo.png" alt="Strandbad Utting Logo">
     <div class="nav-logo-text">
-      <span class="brand">Segelschule Marx</span>
-      <span class="sub">Utting am Ammersee</span>
+      <span class="brand">Strandbad Utting</span>
+      <span class="sub">Am Ammersee</span>
     </div>
-  </div>
+  </a>
+  <button class="nav-burger" aria-label="Menü öffnen" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
-    <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Startseite</a></li>
-    <li><a href="#" onclick="showPage('segel')" id="nav-segel">Segelboot</a></li>
-    <li><a href="#" onclick="showPage('motor')" id="nav-motor">Motorboot</a></li>
-    <li><a href="#" onclick="showPage('kontakt')" id="nav-kontakt">Kontakt</a></li>
-    <li><a href="#" onclick="showPage('kontakt')" class="nav-cta">Kurs buchen</a></li>
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Startseite</a></li>
+    <li><a onclick="showPage('strandbad')" id="nav-strandbad">Strandbad</a></li>
+    <li><a onclick="showPage('sommerkarte')" id="nav-sommerkarte">Sommerkarte</a></li>
+    <li><a onclick="showPage('geschichte')" id="nav-geschichte">Geschichte</a></li>
+    <li><a onclick="showPage('kontakt')" id="nav-kontakt">Kontakt</a></li>
+    <li><a onclick="showPage('kontakt')" class="nav-cta">Anfahrt</a></li>
   </ul>
 </nav>
-
-<!-- WHATSAPP FLOAT -->
-<a class="whatsapp-float" href="https://wa.me/491522566394" target="_blank" title="WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
 
 <!-- ═══════════════════════════════════════
      PAGE: HOME
@@ -1081,1081 +1089,993 @@
 
   <!-- HERO -->
   <div class="hero">
-    <video class="hero-video" autoplay muted loop playsinline id="heroVideo"
-      style="opacity: 0.75;">
-      <source src="uploads/b_d_b_f_c_mp_-ezremove.mp4" type="video/mp4">
-    </video>
+    <img class="hero-img" src="assets/photos/lake-tree.jpg" alt="Strandbad Utting am Ammersee mit Sprungturm und Baum">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Utting am Ammersee · Seit 1975</div>
-      <h1 class="hero-title">Segeln &amp; <em>Motorboot</em><br>am Ammersee</h1>
-      <p class="hero-subtitle">Familiengeführte Segel- und Motorbootschule direkt am Wasser. Vom ersten Segeltag bis zum SKS – wir begleiten Sie persönlich.</p>
+      <div class="hero-eyebrow">Utting am Ammersee · Seit 1929</div>
+      <h1 class="hero-title">Baden. <em>Springen.</em><br>Sitzenbleiben.</h1>
+      <p class="hero-subtitle">Strandbad mit 10‑Meter‑Sprungturm, Biergarten unter alten Bäumen und langen Sommerabenden direkt am See.</p>
       <div class="hero-cards">
-        <div class="hero-card" onclick="showPage('segel')">
-          <div class="hero-card-icon">⛵</div>
-          <div class="hero-card-label">Segelschein</div>
+        <div class="hero-card" onclick="showPage('strandbad')">
+          <div class="hero-card-icon">🏖️</div>
+          <div class="hero-card-label">Strandbad</div>
         </div>
-        <div class="hero-card" onclick="showPage('motor')">
-          <div class="hero-card-icon">🚤</div>
-          <div class="hero-card-label">Motorbootschein</div>
+        <div class="hero-card" onclick="showPage('strandbad'); setTimeout(()=>setTab('sprungturm'),100)">
+          <div class="hero-card-icon">🪜</div>
+          <div class="hero-card-label">Sprungturm</div>
         </div>
-        <div class="hero-card" onclick="showPage('segel'); setTimeout(()=>setTab('verleih-segel'),100)">
-          <div class="hero-card-icon">⚓</div>
-          <div class="hero-card-label">Bootsverleih</div>
+        <div class="hero-card" onclick="showPage('sommerkarte')">
+          <div class="hero-card-icon">🍻</div>
+          <div class="hero-card-label">Sommerkarte</div>
         </div>
         <div class="hero-card" onclick="showPage('kontakt')">
-          <div class="hero-card-icon">📞</div>
-          <div class="hero-card-label">Kontakt</div>
+          <div class="hero-card-icon">📍</div>
+          <div class="hero-card-label">Anfahrt</div>
         </div>
       </div>
     </div>
     <div class="hero-scroll">Scrollen</div>
   </div>
 
-  <!-- TRUST BAR -->
-  <div class="trust-bar">
-    <div class="trust-item">
-      <div class="trust-num">50+</div>
-      <div class="trust-label"><strong>Jahre</strong>Segelschulerfahrung</div>
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <div class="status-item">
+      <div class="status-num">~100</div>
+      <div class="status-label"><strong>Jahre</strong>Tradition am Ammersee</div>
     </div>
-    <div class="trust-item">
-      <div class="trust-num">∞</div>
-      <div class="trust-label"><strong>Persönlich</strong>Lehrer im Boot dabei</div>
+    <div class="status-item">
+      <div class="status-num">10m</div>
+      <div class="status-label"><strong>Sprungturm</strong>Wahrzeichen von Utting</div>
     </div>
-    <div class="trust-item">
-      <div class="trust-num">⚓</div>
-      <div class="trust-label"><strong>Direkt am See</strong>Eigene Steganlage</div>
+    <div class="status-item">
+      <div class="status-num">∞</div>
+      <div class="status-label"><strong>Freier Zugang</strong>Direkt zum See</div>
     </div>
-    <div class="trust-item">
-      <div class="trust-num">4</div>
-      <div class="trust-label"><strong>Generationen</strong>Fischerfamilie Marx</div>
+    <div class="status-item">
+      <div class="status-num">2025</div>
+      <div class="status-label"><strong>Neue Küche</strong>Pächter Miene Gruber</div>
     </div>
   </div>
+
+  <!-- ÖFFNUNGSZEITEN -->
+  <section class="hours-section" id="oeffnungszeiten">
+    <div class="section-inner">
+      <div class="section-eyebrow">Heute geöffnet?</div>
+      <h2 class="section-title">Öffnungszeiten<br><em>auf einen Blick</em></h2>
+      <p class="section-lead">Bei gutem Wetter — also ab&nbsp;15&nbsp;°C und Sonnenschein — sind Strandbad und Biergarten täglich da. Der Sprungturm hat eigene Zeiten, weil er unter Aufsicht läuft.</p>
+
+      <div class="hours-grid">
+        <div class="hours-card">
+          <div class="hours-tag">Strandbad &amp; Biergarten</div>
+          <h4>Bei gutem Wetter</h4>
+          <div class="hours-line"><span>Mo – So</span><span>10:00 – 22:00</span></div>
+          <div class="hours-line"><span>Saisonstart</span><span>1. Mai 2026</span></div>
+        </div>
+        <div class="hours-card">
+          <div class="hours-tag">Sprungturm</div>
+          <h4>Mit Aufsicht</h4>
+          <div class="hours-line"><span>Mo – Do</span><span>14:00 – 21:00</span></div>
+          <div class="hours-line"><span>Fr – So &amp; Ferien</span><span>12:00 – 21:00</span></div>
+        </div>
+        <div class="hours-card">
+          <div class="hours-tag">Saison</div>
+          <h4>Sommerbetrieb 2026</h4>
+          <div class="hours-line"><span>Eröffnung</span><span>1. Mai 2026</span></div>
+          <div class="hours-line"><span>Saisonende</span><span>September</span></div>
+        </div>
+      </div>
+
+      <div class="hours-note">
+        <strong>Wetterregel:</strong> Strandbad und Biergarten öffnen <strong>ab 15&nbsp;°C und Sonnenschein</strong>. Bei wechselhaftem Wetter bitte vorher kurz anrufen oder auf Instagram nachsehen — wir halten dort den Tagesstatus aktuell.
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section class="about-section">
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-img">
-          <img src="uploads/Wir-ueber-uns-1024x680.jpg" alt="Segelschule Marx am Ammersee">
+          <img src="assets/photos/lake-tree.jpg" alt="Alter Baum, Liegewiese und Sprungturm im Strandbad Utting">
           <div class="about-img-badge">
-            <div class="year">1975</div>
-            <div class="year-label">Gründungsjahr</div>
+            <div class="year">1929</div>
+            <div class="year-label">Seit fast 100 Jahren</div>
           </div>
         </div>
         <div class="about-text">
-          <div class="section-eyebrow">Über uns</div>
-          <h2 class="section-title">Eine Familie,<br><em>ein See</em></h2>
-          <p>Die Familie Marx ist seit Generationen am Ammersee verwurzelt. Als Fischerfamilie in Utting aufgewachsen, haben Klaus und Michael Marx daraus eine der bekanntesten Segel- und Motorbootschulen Bayerns gemacht.</p>
-          <p>Seit 1975 bilden wir Seglerinnen und Segler direkt am Wasser aus – mit eigener Steganlage, eigenen Booten und dem Anspruch, dass der <strong>Lehrer immer mit an Bord</strong> ist und sich an Ihren Kenntnisstand anpasst.</p>
+          <div class="section-eyebrow">Sommerort am See</div>
+          <h2 class="section-title">Ein Ort für alle,<br>die den See <em>einfach mögen</em></h2>
+          <p>Das Strandbad Utting liegt in einer kleinen Bucht am Ammersee — mit altem Baumbestand, freier Liegewiese, Holzdeck und dem markanten Sprungturm als Wahrzeichen.</p>
+          <p>Seit der Saison 2025 führt Martin „Miene&#39;&#39; Gruber das Bad weiter, mit erneuerter Küche und einem klaren Bild: <strong>einladender, gemütlicher und ehrlich</strong> — Strandbad und Biergarten gehören zusammen.</p>
           <div class="about-features">
-            <div class="about-feature">Eigene Boote und Steganlage in Utting</div>
-            <div class="about-feature">Theorie- und Praxiskurse aus einer Hand</div>
-            <div class="about-feature">Kinder-Segelfreizeiten in den Ferien</div>
-            <div class="about-feature">Bootsverleih direkt neben dem Dampfersteg</div>
-            <div class="about-feature">Törns in der Adria mit SKS-Prüfung</div>
+            <div class="about-feature">10‑Meter‑Sprungturm direkt am Wasser</div>
+            <div class="about-feature">Liegewiese, Holzdeck und Badebucht</div>
+            <div class="about-feature">Biergarten mit ca. 100 Plätzen</div>
+            <div class="about-feature">Frische Küche, Kaffeebar &amp; Eis</div>
+            <div class="about-feature">Bayerisch, ehrlich, am Ammersee daheim</div>
+          </div>
+          <div style="margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <a class="btn btn-primary" onclick="showPage('strandbad')">Zum Strandbad</a>
+            <a class="btn btn-outline" onclick="showPage('sommerkarte')">Sommerkarte ansehen</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- OFFERS -->
+  <!-- OFFERS GRID -->
   <section class="offer-section" style="padding-top: 80px; padding-bottom: 0;">
     <div class="section-inner">
-      <div class="section-eyebrow">Angebote</div>
-      <h2 class="section-title" style="color: var(--white);">Was möchten<br><em style="color: var(--water);">Sie lernen?</em></h2>
-      <p class="section-lead">Von Anfängerkursen bis zum Sportküstenschifferschein – wir haben das Richtige für Sie.</p>
+      <div class="section-eyebrow">Was Sie hier finden</div>
+      <h2 class="section-title">Sommer am See,<br><em>auf drei Arten</em></h2>
+      <p class="section-lead">Von der Liegewiese in den Schatten, vom Holzdeck auf den Turm, vom Sprung in den Biergarten. Drei Bereiche, ein Nachmittag.</p>
     </div>
     <div class="offers-grid">
-      <div class="offer-card" onclick="showPage('segel'); setTimeout(()=>setTab('theorie-segel'),100)">
-        <img src="uploads/Segelschein-Theorie-300x300.jpg" alt="Segelschein Theorie">
+      <div class="offer-card" onclick="showPage('strandbad')">
+        <img src="assets/yd/yd11-crowd-water.jpg" alt="Liegewiese und See im Strandbad Utting">
         <div class="offer-card-overlay">
-          <div class="offer-card-tag">Segelboot</div>
-          <div class="offer-card-title">Segelschein Theorie</div>
-          <div class="offer-card-desc">Sportbootführerschein Binnen – Theoriegrundlagen für Ihren Segelschein. Auch als Wochenendkurs.</div>
+          <div class="offer-card-tag">Strandbad</div>
+          <div class="offer-card-title">Liegewiese &amp; See</div>
+          <div class="offer-card-desc">Freier Seezugang, Holzdeck und Schatten unter alten Bäumen — Platz zum Liegen, Reden und Eintauchen.</div>
           <div class="offer-card-cta">Mehr erfahren</div>
         </div>
       </div>
-      <div class="offer-card" onclick="showPage('segel'); setTimeout(()=>setTab('praxis-segel'),100)">
-        <img src="uploads/Segelschein-Praxis-300x300.jpg" alt="Segelschein Praxis">
+      <div class="offer-card" onclick="showPage('strandbad'); setTimeout(()=>setTab('sprungturm'),100)">
+        <img src="assets/yd/yd05-tower-crowd.jpg" alt="10 Meter Sprungturm Strandbad Utting">
         <div class="offer-card-overlay">
-          <div class="offer-card-tag">Segelboot</div>
-          <div class="offer-card-title">Segelschein Praxis</div>
-          <div class="offer-card-desc">Mit dem Lehrer direkt am Ammersee. Wochen- und Wochenendkurse, angepasst an Ihr Niveau.</div>
+          <div class="offer-card-tag">Wahrzeichen</div>
+          <div class="offer-card-title">10 Meter Sprungturm</div>
+          <div class="offer-card-desc">Das Stück Utting, das man vom Schiff aus erkennt. Drei Plattformen, klare Aufsichtszeiten — für Mutige aller Größen.</div>
           <div class="offer-card-cta">Mehr erfahren</div>
         </div>
       </div>
-      <div class="offer-card" onclick="showPage('motor')">
-        <img src="uploads/Motorboot-Binnen-300x300.jpg" alt="Motorbootschein">
+      <div class="offer-card" onclick="showPage('sommerkarte')">
+        <img src="assets/photos/biergarten-night.jpg" alt="Biergarten am Strandbad Utting bei Nacht">
         <div class="offer-card-overlay">
-          <div class="offer-card-tag">Motorboot</div>
-          <div class="offer-card-title">Motorbootschein</div>
-          <div class="offer-card-desc">Binnen und See/Küste. Theorie in einem Tag, Praxis direkt auf dem Ammersee.</div>
-          <div class="offer-card-cta">Mehr erfahren</div>
+          <div class="offer-card-tag">Biergarten &amp; Küche</div>
+          <div class="offer-card-title">Sommerkarte</div>
+          <div class="offer-card-desc">Bratwurst, überbackene Baguettes, Obatzda, Tegernseer vom Fass und Spritz auf der Surfboard‑Karte. Alles handgeschrieben, alles ehrlich.</div>
+          <div class="offer-card-cta">Karte ansehen</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AMMERSEEFISCHER -->
-  <section style="background: var(--navy); padding: 80px 48px;">
-    <div class="section-inner" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center;">
-      <div>
-        <img src="uploads/Ammersee-Fischer.png" alt="Der Ammersee-Fischer" style="width: 100%; max-width: 380px; border-radius: 4px; display: block;">
+  <!-- HISTORY TEASER -->
+  <section class="band-section">
+    <div class="section-inner">
+      <div class="band-grid">
+        <img src="assets/yd/yd06-band.jpg" alt="Live-Musik im Strandbad Utting">
+        <div>
+          <div class="section-eyebrow">Tradition trifft Neustart</div>
+          <h2 class="section-title">Fast 100 Jahre <em>am Wasser</em></h2>
+          <p>Das Strandbad gehört seit Generationen zu Utting. Denkmalgeschützt, in einer kleinen Bucht versteckt, mit dem Sprungturm als Marke vom Ufer bis weit auf den See.</p>
+          <p>2029 wird das Bad 100. Bis dahin schreiben der neue Pächter Miene Gruber und sein Team das nächste Kapitel: <strong>frische Küche, klare Atmosphäre, ehrliches Bayern</strong>. Ohne den Charme zu verbiegen, der den Ort ausmacht.</p>
+          <div style="margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <a class="btn btn-white" onclick="showPage('geschichte')">Zur Geschichte</a>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- EVENT STRIP -->
+  <div class="event-strip">
+    <div class="event-strip-inner">
+      <img src="assets/photos/event-bluekilla.jpg" alt="Tanz in den Mai mit Bluekilla im Strandbad Utting">
       <div>
-        <div class="section-eyebrow">Tradition seit Generationen</div>
-        <h2 class="section-title" style="color: var(--white);">Der <em style="color: var(--water);">Ammersee-Fischer</em></h2>
-        <p style="font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.65); margin-bottom: 20px;">Die Familie Marx ist nicht nur Segelschule – sie ist Teil der Geschichte des Ammersees. Als Fischerfamilie kennen sie den See und seine Eigenheiten wie kaum jemand sonst.</p>
-        <p style="font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.65); margin-bottom: 32px;">Diese Verbundenheit mit dem Wasser spürt man in jedem Kurs. Ob bei Windstille oder Sturm – Klaus und Michael Marx wissen, wie der Ammersee tickt.</p>
-        <a href="#" onclick="showPage('kontakt')" class="btn btn-primary">Kontakt aufnehmen</a>
+        <h3>Tanz in den Mai mit Bluekilla</h3>
+        <p>30. April 2026 ab 20:00 Uhr — Live im Strandbad Utting. Saisonstart, lange Tafeln, der Turm leuchtet.</p>
+      </div>
+      <a class="btn btn-outline" onclick="showPage('kontakt')">Adresse</a>
+    </div>
+  </div>
+
+  <!-- GALLERY TEASER -->
+  <section class="gallery-section">
+    <div class="section-inner">
+      <div class="section-eyebrow">Bilder</div>
+      <h2 class="section-title">Stimmungen <em>am See</em></h2>
+      <p class="section-lead">Von der frühen Sonne über dem Wasser bis zur Lichterkette im Biergarten — ein Tag im Strandbad Utting.</p>
+      <div class="gallery-grid">
+        <figure class="tall"><img src="assets/yd/yd03-bratwurst.jpg" alt="Bratwurstplatte mit Sprungturm im Hintergrund"></figure>
+        <figure><img src="assets/photos/biergarten-night.jpg" alt="Biergarten bei Nacht mit Lichterkette"></figure>
+        <figure><img src="assets/yd/yd07-kaffee.jpg" alt="Kaffeebar im Strandbad"></figure>
+        <figure><img src="assets/photos/eis.jpg" alt="Eistafel und Sprungturm"></figure>
+        <figure><img src="assets/yd/yd08-bar1.jpg" alt="Hinter der Bar"></figure>
+        <figure><img src="assets/photos/seating-night.jpg" alt="Sitzplätze mit Lichtern"></figure>
+        <figure><img src="assets/yd/yd02-evening.jpg" alt="Abendstimmung am See"></figure>
       </div>
     </div>
   </section>
 
   <!-- CTA BANNER -->
-  <div class="seasons-banner">
-    <h3>Saison 2026 ist geöffnet</h3>
-    <p>Jetzt Kurs buchen – Wochenkurse, Wochenendkurse und Ferienkurse verfügbar</p>
-    <div class="seasons-btns">
-      <a href="#" onclick="showPage('segel')" class="btn btn-white">Segelkurse ansehen</a>
-      <a href="#" onclick="showPage('motor')" class="btn btn-ghost">Motorbootkurse ansehen</a>
+  <div class="cta-banner">
+    <h3>Saison 2026 ist eröffnet</h3>
+    <p>Bei gutem Wetter täglich offen. Reinkommen, Platz suchen, sitzenbleiben.</p>
+    <div class="cta-btns">
+      <a class="btn btn-white" onclick="showPage('sommerkarte')">Sommerkarte</a>
+      <a class="btn btn-ghost" onclick="showPage('kontakt')">Anfahrt &amp; Kontakt</a>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="brand-name">Segelschule Marx</div>
-          <div class="brand-sub">Wassersport Marx · Utting am Ammersee</div>
-          <p>Familiengeführte Segel- und Motorbootschule am Ammersee seit 1975. Ihr Partner für Segelscheine, Motorbootscheine, Bootsverleih und Törns.</p>
-        </div>
-        <div class="footer-col">
-          <h5>Angebote</h5>
-          <ul>
-            <li><a onclick="showPage('segel')">Segelschein</a></li>
-            <li><a onclick="showPage('motor')">Motorbootschein</a></li>
-            <li><a onclick="showPage('segel'); setTimeout(()=>setTab('verleih-segel'),100)">Bootsverleih</a></li>
-            <li><a onclick="showPage('kontakt')">Eventsegeln</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Schule</h5>
-          <ul>
-            <li><a onclick="showPage('segel'); setTimeout(()=>setTab('theorie-segel'),100)">Segeltheorie</a></li>
-            <li><a onclick="showPage('segel'); setTimeout(()=>setTab('praxis-segel'),100)">Segelpraxis</a></li>
-            <li><a onclick="showPage('motor')">Motorboot Binnen</a></li>
-            <li><a onclick="showPage('motor'); setTimeout(()=>setTab('praxis-motor'),100)">Motorboot See</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Kontakt</h5>
-          <ul>
-            <li><a>08806 / 7704</a></li>
-            <li><a>0152 / 256 639 49</a></li>
-            <li><a>segelschulemarx@gmail.com</a></li>
-            <li><a onclick="showPage('kontakt')">Anfahrt</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Segelschule Klaus und Michael Marx · Seestraße 17, 86919 Utting</span>
-        <div style="display: flex; gap: 24px;">
-          <a href="#">Datenschutz</a>
-          <a href="#">Impressum</a>
-          <a href="#">AGB</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 </div>
 
 <!-- ═══════════════════════════════════════
-     PAGE: SEGELBOOT
+     PAGE: STRANDBAD
      ═══════════════════════════════════════ -->
-<div class="page" id="page-segel">
+<div class="page" id="page-strandbad">
   <div class="page-hero">
-    <img src="uploads/Segelschein-Praxis-300x300.jpg" alt="Segelkurse am Ammersee">
+    <img src="assets/yd/yd11-crowd-water.jpg" alt="Strandbad Utting am Ammersee">
     <div class="page-hero-overlay"></div>
     <div class="page-hero-content">
-      <div class="page-hero-eyebrow">Segelausbildung · Ammersee</div>
-      <h1 class="page-hero-title">Segelboot &amp; <em>Segelschein</em></h1>
+      <div class="page-hero-eyebrow">Baden &amp; Sprungturm · Ammersee</div>
+      <h1 class="page-hero-title">Strandbad &amp; <em>Sprungturm</em></h1>
     </div>
   </div>
 
   <div class="tabs-nav">
     <div class="tabs-inner">
-      <button class="tab-btn active" onclick="setTab('theorie-segel')">Theorie</button>
-      <button class="tab-btn" onclick="setTab('praxis-segel')">Praxis</button>
-      <button class="tab-btn" onclick="setTab('verleih-segel')">Bootsverleih</button>
+      <button class="tab-btn active" data-group="strandbad" onclick="setTab('liegewiese')">Liegewiese &amp; Bucht</button>
+      <button class="tab-btn" data-group="strandbad" onclick="setTab('sprungturm')">10‑Meter‑Sprungturm</button>
+      <button class="tab-btn" data-group="strandbad" onclick="setTab('familie')">Familie &amp; Sicherheit</button>
+      <button class="tab-btn" data-group="strandbad" onclick="setTab('infos')">Eintritt &amp; Regeln</button>
     </div>
   </div>
 
-  <!-- TAB: THEORIE -->
-  <div class="tab-content active" id="tab-theorie-segel">
+  <!-- TAB: LIEGEWIESE -->
+  <div class="tab-content active" id="tab-liegewiese">
     <section>
       <div class="section-inner">
-        <div class="section-eyebrow">Segelschein Binnen</div>
-        <h2 class="section-title">Theoriekurse</h2>
-        <p class="section-lead">Fundiertes Theoriewissen ist die Basis für sicheres Segeln. Unsere Kurse bereiten Sie gezielt auf die offizielle Prüfung vor.</p>
-
-        <div class="course-grid">
-          <div class="course-card">
-            <div class="course-card-img">
-              <img src="uploads/Segelschein-Theorie-300x300.jpg" alt="Segeltheorie">
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Theorie · Binnen</div>
-              <h3 class="course-card-title">Segelschein Theorie</h3>
-              <p class="course-card-desc">Sportbootführerschein Binnen – Theorie. Ausfahrten, Regeln, Knoten, Wetterkunde und Gesetzeskunde.</p>
-              <div class="course-card-price">
-                <span class="price-main">160 €</span>
-                <span class="price-unit">pro Kurs</span>
-              </div>
-              <ul class="course-card-features">
-                <li>Wochenend- und Wochenkurse</li>
-                <li>Kleine Gruppen, persönliche Betreuung</li>
-                <li>Kursorte: Utting oder auf Anfrage</li>
-                <li>Kombikurs mit Praxis möglich</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Kurs anfragen</a>
+        <div class="about-grid">
+          <div class="about-img">
+            <img src="assets/photos/lake-tree.jpg" alt="Liegewiese mit altem Baum und See">
+            <div class="about-img-badge">
+              <div class="year">~100m</div>
+              <div class="year-label">Seezugang</div>
             </div>
           </div>
-
-          <div class="course-card">
-            <div class="course-card-img">
-              <img src="uploads/Segelschein-Theorie-300x300.jpg" alt="Kombikurs Segelschein">
+          <div class="about-text">
+            <div class="section-eyebrow">Bucht, Wiese, Holzdeck</div>
+            <h2 class="section-title">Direkt am <em>Wasser</em></h2>
+            <p>Das Strandbad ist in der kleinen Bucht zwischen Bootshäusern und Sprungturm gelegen. Eine offene Liegewiese, Schatten unter alten Bäumen, ein Holzdeck am Wasser — keine Animation, kein Trubel, dafür viel Luft.</p>
+            <p>Wer Ammersee mag, fühlt sich sofort daheim: Wiesensaum, Schwalben, das Pfeifen vom Dampfersteg in der Ferne, und ab und zu der Sprung vom Turm.</p>
+            <div class="about-features">
+              <div class="about-feature">Freie Liegewiese mit altem Baumbestand</div>
+              <div class="about-feature">Holzdeck mit Treppen ins Wasser</div>
+              <div class="about-feature">Badebucht ohne starke Strömung</div>
+              <div class="about-feature">Eines der wenigen Bäder am Ammersee mit freiem Zugang</div>
             </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Theorie + Praxis · Kombi</div>
-              <h3 class="course-card-title">Komplettkurs Segeln</h3>
-              <p class="course-card-desc">Theorie und Praxis in einem Paket. Der einfachste Weg zum Segelschein – alles aus einer Hand.</p>
-              <div class="course-card-price">
-                <span class="price-main">850 €</span>
-                <span class="price-unit">inkl. Motoranteil</span>
-              </div>
-              <ul class="course-card-features">
-                <li>Theorie + Segelpraxis + Motoranteil</li>
-                <li>Ohne Motoranteil: 760 €</li>
-                <li>2-Wochen-Intensivkurs möglich</li>
-                <li>Wiederholung bei Nichtbestehen möglich</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Kurs anfragen</a>
-            </div>
-          </div>
-
-          <div class="course-card">
-            <div class="course-card-img" style="height: 200px; background: var(--navy); display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 64px;">🌊</span>
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Theorie · SKS &amp; Seefunk</div>
-              <h3 class="course-card-title">SKS &amp; SRC Theorie</h3>
-              <p class="course-card-desc">Sportküstenschifferschein und Seefunk – für alle, die auf See fahren möchten. 4-Tages-Wochenendkurs.</p>
-              <div class="course-card-price">
-                <span class="price-main">280 €</span>
-                <span class="price-unit">SKS Theorie</span>
-              </div>
-              <ul class="course-card-features">
-                <li>SKS-Theorie: 4 Tage Sa+So</li>
-                <li>SRC Seefunk: 2 Tage, 250 €</li>
-                <li>Kombikurs See + SRC: 425 €</li>
-                <li>Adria-Prüfungstörns buchbar</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Kurs anfragen</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING -->
-    <section style="background: var(--sand); padding-top: 80px;">
-      <div class="section-inner">
-        <div class="section-eyebrow">Preise &amp; Pakete</div>
-        <h2 class="section-title">Alle <em>Theoriepreise</em></h2>
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <div class="pricing-name">Theorie Binnen</div>
-            <div class="pricing-price">160 €</div>
-            <div class="pricing-period">Segeltheorie Binnen</div>
-            <div class="pricing-divider"></div>
-            <ul class="pricing-features">
-              <li>Segelgesetzeskunde</li>
-              <li>Knoten und Seemannschaft</li>
-              <li>Wetterkunde</li>
-              <li>Wochenenddurchführung</li>
-            </ul>
-            <a href="#" onclick="showPage('kontakt')" class="btn btn-outline btn-full">Anfragen</a>
-          </div>
-          <div class="pricing-card featured">
-            <div class="pricing-featured-badge">Empfehlung</div>
-            <div class="pricing-name">Komplettkurs</div>
-            <div class="pricing-price">850 €</div>
-            <div class="pricing-period">Theorie + Praxis + Motor</div>
-            <div class="pricing-divider"></div>
-            <ul class="pricing-features">
-              <li>Theorie Binnen</li>
-              <li>Segelpraxis am Ammersee</li>
-              <li>Motorbootanteil inklusive</li>
-              <li>Prüfungsvorbereitung</li>
-            </ul>
-            <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Jetzt buchen</a>
-          </div>
-          <div class="pricing-card">
-            <div class="pricing-name">SKS + SRC Kombi</div>
-            <div class="pricing-price">425 €</div>
-            <div class="pricing-period">See + Seefunk</div>
-            <div class="pricing-divider"></div>
-            <ul class="pricing-features">
-              <li>Sportbootschein Küste</li>
-              <li>SRC Seefunkzeugnis</li>
-              <li>2 Wochenendkurse</li>
-              <li>Adria-Törn buchbar</li>
-            </ul>
-            <a href="#" onclick="showPage('kontakt')" class="btn btn-outline btn-full">Anfragen</a>
           </div>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- TAB: PRAXIS -->
-  <div class="tab-content" id="tab-praxis-segel">
+  <!-- TAB: SPRUNGTURM -->
+  <div class="tab-content" id="tab-sprungturm">
     <section>
       <div class="section-inner">
-        <div class="section-eyebrow">Segelpraxis · Ammersee</div>
-        <h2 class="section-title">Praxiskurse <em>am Wasser</em></h2>
-        <p class="section-lead">Der Segellehrer sitzt mit Ihnen im Boot und passt die Übungen direkt an Ihren Kenntnisstand an. Mo–Fr 09:30–12:00 und 13:30–17:00 Uhr.</p>
-
-        <div class="course-grid">
-          <div class="course-card">
-            <div class="course-card-img">
-              <img src="uploads/Segelschein-Praxis-300x300.jpg" alt="Segelpraxis">
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Praxis · Binnen</div>
-              <h3 class="course-card-title">Segel-Praxiskurs</h3>
-              <p class="course-card-desc">Praxisausbildung direkt am Ammersee. Mit eigenem Schulungsboot, eigenem Steg und persönlichem Segellehrer an Bord.</p>
-              <div class="course-card-price">
-                <span class="price-main">320 €</span>
-                <span class="price-unit">Praxiskurs</span>
-              </div>
-              <ul class="course-card-features">
-                <li>Mo–Fr, 09:30–12:00 Uhr</li>
-                <li>Mo–Fr, 13:30–17:00 Uhr</li>
-                <li>Lehrer immer mit an Bord</li>
-                <li>Nach Kursende weiterüben möglich</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Termin anfragen</a>
-            </div>
+        <div class="about-grid" style="grid-template-columns: 1.1fr 1fr;">
+          <div class="about-text">
+            <div class="section-eyebrow">Wahrzeichen</div>
+            <h2 class="section-title">10 Meter <em>nach unten</em></h2>
+            <p>Drei Plattformen, in 1, 3 und 10 Metern. Die hohe Plattform ist das Stück Utting, das man vom Schiff aus erkennt — und manchmal die längste Schlange am See.</p>
+            <p>Der Turm läuft <strong>nur unter Aufsicht</strong>. Das schützt vor allem die Mutigen, denen es fast egal ist.</p>
           </div>
-
-          <div class="course-card">
-            <div class="course-card-img">
-              <img src="uploads/Segelschein-Praxis-300x300.jpg" alt="Schnuppersegeln">
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Privatunterricht</div>
-              <h3 class="course-card-title">Schnuppersegeln</h3>
-              <p class="course-card-desc">Für zwei Personen mit Segellehrer – ideal zum Reinschnuppern oder für gezieltes Training ohne Kurs.</p>
-              <div class="course-card-price">
-                <span class="price-main">70 €</span>
-                <span class="price-unit">/ Boot &amp; Stunde</span>
-              </div>
-              <ul class="course-card-features">
-                <li>2 Personen + Segellehrer</li>
-                <li>Termin nach Vereinbarung</li>
-                <li>Ideal als Einstieg</li>
-                <li>Gutschein möglich</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Termin anfragen</a>
-            </div>
+          <div class="about-img">
+            <img src="assets/yd/yd05-tower-crowd.jpg" alt="Sprungturm im Strandbad Utting" style="height: 480px;">
           </div>
+        </div>
 
-          <div class="course-card">
-            <div class="course-card-img" style="background: linear-gradient(135deg, var(--ocean), var(--navy)); display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 80px;">⛵</span>
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Praxis · Adria</div>
-              <h3 class="course-card-title">Segeltörns Adria</h3>
-              <p class="course-card-desc">Ausbildungs- und Urlaubstörns in Kroatien. SKS-Prüfung am Törnende möglich. Marina Funtana bei Porec.</p>
-              <div class="course-card-price">
-                <span class="price-main">ab 800 €</span>
-              </div>
-              <ul class="course-card-features">
-                <li>AT 3: 06.06.–13.06.2026 – 860 €</li>
-                <li>AT 4: 18.07.–25.07.2026 – 830 €</li>
-                <li>AT 5: 12.09.–19.09.2026 – 800 €</li>
-                <li>TrT 6: 22.10.–31.10.2026 – 800 €</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Törn anfragen</a>
-            </div>
+        <div class="hours-grid" style="margin-top: 56px;">
+          <div class="hours-card">
+            <div class="hours-tag">Mo – Do</div>
+            <h4>Schultag</h4>
+            <div class="hours-line"><span>Geöffnet</span><span>14:00 – 21:00</span></div>
+            <div class="hours-line"><span>Aufsicht</span><span>vor Ort</span></div>
+          </div>
+          <div class="hours-card">
+            <div class="hours-tag">Fr – So</div>
+            <h4>Wochenende</h4>
+            <div class="hours-line"><span>Geöffnet</span><span>12:00 – 21:00</span></div>
+            <div class="hours-line"><span>Aufsicht</span><span>vor Ort</span></div>
+          </div>
+          <div class="hours-card">
+            <div class="hours-tag">Schulferien</div>
+            <h4>Bayrische Ferien</h4>
+            <div class="hours-line"><span>Geöffnet</span><span>12:00 – 21:00</span></div>
+            <div class="hours-line"><span>Wetter</span><span>nach Lage</span></div>
+          </div>
+        </div>
+
+        <div class="hours-note" style="margin-top: 24px;">
+          <strong>Wichtig:</strong> Bei Gewitter, sehr starkem Wind oder unklarer Wetterlage kann der Turm kurzfristig schließen — das entscheidet die Aufsicht vor Ort. Bitte Anweisungen folgen.
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- TAB: FAMILIE -->
+  <div class="tab-content" id="tab-familie">
+    <section>
+      <div class="section-inner">
+        <div class="section-eyebrow">Mit Kindern und ohne</div>
+        <h2 class="section-title">Familie &amp; <em>Sicherheit</em></h2>
+        <p class="section-lead">Das Strandbad ist als Freibad organisiert. Eine flache Bucht, Sicht auf den Sprungturm und Aufsicht in den ausgewiesenen Zeiten — alles in Reichweite.</p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h4>Badeaufsicht</h4>
+            <p>Die Badeaufsicht ist eng mit dem Betrieb verzahnt. Bei Schwimmen außerhalb der Aufsichtszeiten gilt: auf eigene Verantwortung — wie überall am See.</p>
+          </div>
+          <div class="info-card">
+            <h4>Flache Bucht</h4>
+            <p>Der Einstieg ist flach und übersichtlich, gut für kleine Kinder. Das Holzdeck ist die natürliche Eltern‑Tribüne.</p>
+          </div>
+          <div class="info-card">
+            <h4>Hausordnung</h4>
+            <p>Bitte Anweisungen vom Team und der Aufsicht folgen. Die ausgehängte Hausordnung gilt — sie ist kurz und eindeutig.</p>
+          </div>
+          <div class="info-card">
+            <h4>UV‑Index am Eingang</h4>
+            <p>Am Kioskhaus hängt eine farbige UV‑Index‑Tafel. Vor allem an Hochsommer­tagen gut, kurz draufzuschauen.</p>
           </div>
         </div>
       </div>
     </section>
+  </div>
 
-    <section style="background: var(--sand); padding-top: 80px;">
+  <!-- TAB: INFOS -->
+  <div class="tab-content" id="tab-infos">
+    <section>
       <div class="section-inner">
-        <div class="section-eyebrow">Sonderangebote</div>
-        <h2 class="section-title">Kinder &amp; <em>Familien</em></h2>
-        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center;">
-          <div>
-            <p style="font-size: 16px; line-height: 1.85; color: var(--text-light); margin-bottom: 20px;">Kinder zwischen 8 und 14 Jahren können in den bayerischen Pfingst- und Sommerferien eigenständig segeln lernen – während Eltern parallel Erwachsenenkurse besuchen.</p>
-            <p style="font-size: 16px; line-height: 1.85; color: var(--text-light); margin-bottom: 32px;">Voraussetzung: 15 Minuten in tiefem Wasser schwimmen. Schwimmwesten werden gestellt.</p>
-            <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px;">
-              <div style="font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; color: var(--navy);">230 €</div>
-              <div style="font-size: 13px; color: var(--text-light);">pro Kind<br>Ferienkurs</div>
-            </div>
-            <a href="#" onclick="showPage('kontakt')" class="btn btn-primary">Kinderkurs anfragen</a>
-          </div>
-          <div style="background: var(--navy); border-radius: 4px; padding: 36px; color: var(--white);">
-            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 12px;">Kinder-Segelfreizeit</div>
-            <div style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 20px;">Details</div>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
-              <li style="font-size: 14px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><span style="color: var(--amber-light);">—</span>Alter: 8 bis 14 Jahre</li>
-              <li style="font-size: 14px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><span style="color: var(--amber-light);">—</span>Mo–Fr, 09:30–16:30 Uhr</li>
-              <li style="font-size: 14px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><span style="color: var(--amber-light);">—</span>Pfingst- und Sommerferien Bayern</li>
-              <li style="font-size: 14px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><span style="color: var(--amber-light);">—</span>Schwimmnachweis erforderlich</li>
-              <li style="font-size: 14px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><span style="color: var(--amber-light);">—</span>Schwimmwesten gestellt</li>
+        <div class="section-eyebrow">Eintritt &amp; gut zu wissen</div>
+        <h2 class="section-title">Praktisches <em>auf einen Blick</em></h2>
+        <p class="section-lead">Die genauen Eintrittspreise und Saisonkarten 2026 bestätigt der Betrieb vor dem Saisonstart. Falls hier noch ein konkreter Tarif fehlt, einfach kurz beim Team nachfragen — wir tragen es nach.</p>
+
+        <div class="menu-grid">
+          <div class="menu-card">
+            <h3>Eintritt 2026</h3>
+            <div class="menu-sub">Wird vom Betrieb bestätigt</div>
+            <ul class="menu-list">
+              <li><span class="name">Erwachsene</span><span class="price">tba</span></li>
+              <li><span class="name">Jugendliche / Schüler</span><span class="price">tba</span></li>
+              <li><span class="name">Kinder bis 6</span><span class="price">tba</span></li>
+              <li><span class="name">Familienkarte</span><span class="price">tba</span></li>
+              <li><span class="name">Saisonkarte</span><span class="price">tba</span></li>
             </ul>
+            <div class="menu-meta">Sobald die Tarife für 2026 bestätigt sind, erscheinen sie hier mit Beträgen. Aktuelle Auskunft am Eingang oder telefonisch.</div>
+          </div>
+
+          <div class="menu-card">
+            <h3>Auf dem Gelände</h3>
+            <div class="menu-sub">Was Sie finden</div>
+            <ul class="menu-list">
+              <li><span class="name">Toiletten &amp; Umkleiden</span><span class="price">vorhanden</span></li>
+              <li><span class="name">Duschen</span><span class="price">am Ufer</span></li>
+              <li><span class="name">Kioskhaus &amp; Küche</span><span class="price">erneuert</span></li>
+              <li><span class="name">Biergarten</span><span class="price">~100 Plätze</span></li>
+              <li><span class="name">UV‑Index‑Anzeige</span><span class="price">am Eingang</span></li>
+            </ul>
+            <div class="menu-meta">Konkrete Details (z.&nbsp;B. Spinde, Liegen, Sonnenschirme, Hunde, Barriere­armut) bitte beim Team vor Ort erfragen.</div>
+          </div>
+
+          <div class="menu-card">
+            <h3>Wetterregel</h3>
+            <div class="menu-sub">Bei gutem Wetter</div>
+            <ul class="menu-list">
+              <li><span class="name">Öffnung Bad &amp; Biergarten</span><span class="price">10 – 22 Uhr</span></li>
+              <li><span class="name">Mindesttemperatur</span><span class="price">15 °C</span></li>
+              <li><span class="name">Sonne</span><span class="price">erforderlich</span></li>
+              <li><span class="name">Regen / Sturm</span><span class="price">geschlossen</span></li>
+            </ul>
+            <div class="menu-meta">Auf Instagram (@strandbad_utting) wird der Tagesstatus oft verlässlich gepostet.</div>
           </div>
         </div>
+
+        <h3 style="margin-top: 56px; margin-bottom: 18px; font-family: 'Playfair Display', serif; font-size: 26px; color: var(--night);">Häufige Fragen</h3>
+        <details class="faq" open>
+          <summary>Ist heute geöffnet?</summary>
+          <p>Ab 15&nbsp;°C und Sonnenschein ist das Strandbad inklusive Biergarten von 10 bis 22 Uhr geöffnet. Bei Regen, Wind oder unklarer Wetterlage bitte vorher kurz auf Instagram (@strandbad_utting) schauen oder anrufen.</p>
+        </details>
+        <details class="faq">
+          <summary>Wann ist der Sprungturm offen?</summary>
+          <p>Mo–Do von 14:00 bis 21:00 Uhr, Fr–So und in den bayerischen Schulferien von 12:00 bis 21:00 Uhr. Der Turm ist nur unter Aufsicht offen und kann bei Wetter kurzfristig schließen.</p>
+        </details>
+        <details class="faq">
+          <summary>Was kostet der Eintritt?</summary>
+          <p>Die genauen Tarife für die Saison 2026 werden vom Betreiber freigegeben. Sobald sie bestätigt sind, erscheinen sie hier — bis dahin gilt die Auskunft am Eingang.</p>
+        </details>
+        <details class="faq">
+          <summary>Kann ich im Biergarten essen, ohne ins Bad zu gehen?</summary>
+          <p>Ja, der Biergarten ist Teil des Strandbads, hat aber eine eigene Tagesrolle. Konkrete Details (Eintrittspflicht oder freier Zugang in Randzeiten) bitte beim Team erfragen.</p>
+        </details>
+        <details class="faq">
+          <summary>Sind Hunde erlaubt?</summary>
+          <p>Es gilt die offizielle Hausordnung am Eingang. Bei Unsicherheit einfach kurz beim Team nachfragen.</p>
+        </details>
       </div>
     </section>
   </div>
 
-  <!-- TAB: VERLEIH -->
-  <div class="tab-content" id="tab-verleih-segel">
-    <section class="rental-section">
-      <div class="section-inner">
-        <div class="section-eyebrow">Bootsverleih · Utting</div>
-        <h2 class="section-title">Boote <em>mieten</em></h2>
-        <p class="section-lead">Direkt neben dem Dampfersteg in Utting. Von Ostern bis Mitte November – im Sommer bis 19:00 Uhr.</p>
-
-        <div class="rental-table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Boot</th>
-                <th>Wochentag</th>
-                <th>Wochenende / Feiertag</th>
-                <th>Tag (ab 6h)</th>
-                <th>Woche</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Kajütboot Nomade (bis 7 Personen)</td>
-                <td class="price-cell">20 € / Std.</td>
-                <td class="price-cell">25 € / Std.</td>
-                <td class="price-cell">110 € / 140 €</td>
-                <td class="price-cell">500 €</td>
-              </tr>
-              <tr>
-                <td>H-Boot</td>
-                <td class="price-cell">25 € / Std.</td>
-                <td class="price-cell">35 € / Std.</td>
-                <td class="price-cell">160 € / 200 €</td>
-                <td class="price-cell">700 €</td>
-              </tr>
-              <tr>
-                <td>Elektroboot (bis 6 Personen)</td>
-                <td class="price-cell">40 € / Std.</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-              </tr>
-              <tr>
-                <td>Ruderboot (bis 4 Personen)</td>
-                <td class="price-cell">20 € / Std.</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-              </tr>
-              <tr>
-                <td>Tretboot (bis 5 Personen)</td>
-                <td class="price-cell">20 € / Std.</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-              </tr>
-              <tr>
-                <td>SUP</td>
-                <td class="price-cell">12 € / Std.</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="rental-info">
-          <div class="rental-info-card">
-            <h4>Dauerkarten Kajütboot</h4>
-            <p>Fünferkarte (5 Wochentage): <strong>500 €</strong><br>Zehnerkarte (10 Wochentage): <strong>900 €</strong></p>
-          </div>
-          <div class="rental-info-card">
-            <h4>Öffnungszeiten</h4>
-            <p>Ostern bis Mitte November<br>Jun–Aug bis <strong>19:00 Uhr</strong><br>Standort: Am Dampfersteg, Utting</p>
-          </div>
-          <div class="rental-info-card">
-            <h4>Reservierung</h4>
-            <p>📱 0152 / 256 639 49<br>WhatsApp &amp; Telegram<br>✉ segelschulemarx@gmail.com</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EVENTSEGELN -->
-    <section style="background: var(--navy); padding-top: 80px;">
-      <div class="section-inner">
-        <div class="section-eyebrow" style="color: var(--amber-light);">Eventsegeln</div>
-        <h2 class="section-title" style="color: var(--white);">Bavaria 34 <em style="color: var(--water);">chartern</em></h2>
-        <p class="section-lead">Hochseeyacht für Betriebsausflüge, Geburtstage, Hochzeiten, romantische Abendessen an Bord und Tagesfahrten.</p>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px;">
-          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 28px;">
-            <div style="font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--amber-light); margin-bottom: 8px;">350 €</div>
-            <div style="font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 8px;">3 Stunden mit Skipper</div>
-            <div style="font-size: 13px; color: rgba(255,255,255,0.55);">Ab 2 Personen · inkl. Segellehrer</div>
-          </div>
-          <div style="background: rgba(200,146,42,0.15); border: 1px solid var(--amber); border-radius: 4px; padding: 28px;">
-            <div style="font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--amber-light); margin-bottom: 8px;">480 €</div>
-            <div style="font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 8px;">Ganztag mit Skipper</div>
-            <div style="font-size: 13px; color: rgba(255,255,255,0.55);">10:00–17:00 Uhr · nach Vereinbarung</div>
-          </div>
-          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 28px;">
-            <div style="font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--amber-light); margin-bottom: 8px;">Anfrage</div>
-            <div style="font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 8px;">Individuelle Pakete</div>
-            <div style="font-size: 13px; color: rgba(255,255,255,0.55);">Gruppen · Firmen · Gutschein</div>
-          </div>
-        </div>
-        <div style="margin-top: 32px;">
-          <a href="#" onclick="showPage('kontakt')" class="btn btn-primary">Event anfragen</a>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-bottom" style="padding-top: 32px;">
-        <span>© 2026 Segelschule Marx · Seestraße 17, 86919 Utting · 08806 / 7704</span>
-        <div style="display: flex; gap: 24px;">
-          <a href="#" onclick="showPage('home')">Startseite</a>
-          <a href="#" onclick="showPage('kontakt')">Kontakt</a>
-        </div>
-      </div>
+  <!-- CTA -->
+  <div class="cta-banner">
+    <h3>Heute schon am Wasser?</h3>
+    <p>Bei gutem Wetter: einfach vorbeikommen. Reservierung im Bad nicht nötig.</p>
+    <div class="cta-btns">
+      <a class="btn btn-white" onclick="showPage('sommerkarte')">Sommerkarte</a>
+      <a class="btn btn-ghost" onclick="showPage('kontakt')">Anfahrt</a>
     </div>
-  </footer>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════
-     PAGE: MOTORBOOT
+     PAGE: SOMMERKARTE
      ═══════════════════════════════════════ -->
-<div class="page" id="page-motor">
+<div class="page" id="page-sommerkarte">
   <div class="page-hero">
-    <img src="uploads/Motorboot-Binnen-300x300.jpg" alt="Motorbootschein am Ammersee">
+    <img src="assets/photos/biergarten-night.jpg" alt="Biergarten Strandbad Utting bei Nacht">
     <div class="page-hero-overlay"></div>
     <div class="page-hero-content">
-      <div class="page-hero-eyebrow">Motorbootausbildung · Ammersee</div>
-      <h1 class="page-hero-title">Motorboot &amp; <em>Führerschein</em></h1>
+      <div class="page-hero-eyebrow">Biergarten &amp; Küche · Sommerkarte</div>
+      <h1 class="page-hero-title">Sommerkarte <em>2026</em></h1>
     </div>
   </div>
 
   <div class="tabs-nav">
     <div class="tabs-inner">
-      <button class="tab-btn active" onclick="setTab('theorie-motor')">Theorie</button>
-      <button class="tab-btn" onclick="setTab('praxis-motor')">Praxis</button>
-      <button class="tab-btn" onclick="setTab('verleih-motor')">Bootsverleih</button>
+      <button class="tab-btn active" data-group="sommerkarte" onclick="setTab('speisen')">Heute gibt&#39;s</button>
+      <button class="tab-btn" data-group="sommerkarte" onclick="setTab('baguettes')">Überbackene Baguettes</button>
+      <button class="tab-btn" data-group="sommerkarte" onclick="setTab('drinks')">Bier &amp; Drinks</button>
+      <button class="tab-btn" data-group="sommerkarte" onclick="setTab('kaffee')">Kaffeebar</button>
+      <button class="tab-btn" data-group="sommerkarte" onclick="setTab('eis')">Eis</button>
     </div>
   </div>
 
-  <!-- TAB: THEORIE -->
-  <div class="tab-content active" id="tab-theorie-motor">
+  <!-- TAB: SPEISEN -->
+  <div class="tab-content active" id="tab-speisen">
     <section>
       <div class="section-inner">
-        <div class="section-eyebrow">Motorbootschein</div>
-        <h2 class="section-title">Theoriekurse <em>Motor</em></h2>
-        <p class="section-lead">Vom Binnen-Führerschein bis zum Sportküstenschifferschein – wir bereiten Sie umfassend vor.</p>
-
-        <div class="course-grid">
-          <div class="course-card">
-            <div class="course-card-img">
-              <img src="uploads/Motorboot-Binnen-300x300.jpg" alt="Motorboot Binnen">
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Theorie · Binnen Motor</div>
-              <h3 class="course-card-title">Motorbootschein Binnen</h3>
-              <p class="course-card-desc">1-Tages-Theoriekurs: Gesetzeskunde Binnen, Motorenkunde, Wetterkunde, Knoten. 09:30–16:00 Uhr.</p>
-              <div class="course-card-price">
-                <span class="price-main">130 €</span>
-                <span class="price-unit">1-Tages-Kurs</span>
-              </div>
-              <ul class="course-card-features">
-                <li>Kurs: 09:30–16:00 Uhr (1 Tag)</li>
-                <li>Gesetzeskunde Binnen</li>
-                <li>Motorenkunde &amp; Wetterkunde</li>
-                <li>Praxisstunden auf Anfrage</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Termin anfragen</a>
-            </div>
-          </div>
-
-          <div class="course-card">
-            <div class="course-card-img" style="background: linear-gradient(135deg, #1a4f7a, #0d2137); display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 80px;">🚢</span>
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Theorie · See / Küste</div>
-              <h3 class="course-card-title">Motorbootschein See</h3>
-              <p class="course-card-desc">Sportbootführerschein See – Wochenendkurs. Gesetzeskunde Küste, Wetter, Gezeiten, Navigation.</p>
-              <div class="course-card-price">
-                <span class="price-main">250 €</span>
-                <span class="price-unit">Wochenendkurs</span>
-              </div>
-              <ul class="course-card-features">
-                <li>Wochenendkurs (Sa+So)</li>
-                <li>Gesetzeskunde Küste</li>
-                <li>Navigation &amp; Gezeiten</li>
-                <li>Ankern, Schleppen, Sicherheit</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Termin anfragen</a>
-            </div>
-          </div>
-
-          <div class="course-card">
-            <div class="course-card-img" style="background: linear-gradient(135deg, var(--amber), var(--navy)); display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 80px;">⚓</span>
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Kombi · Binnen + See</div>
-              <h3 class="course-card-title">Kombikurs Binnen + See</h3>
-              <p class="course-card-desc">Sportbootführerschein Binnen Motor und See in einem Paket – der ideale Einstieg für alle Gewässer.</p>
-              <div class="course-card-price">
-                <span class="price-main">330 €</span>
-                <span class="price-unit">Kombikurs</span>
-              </div>
-              <ul class="course-card-features">
-                <li>Binnen Motor (1 Tag)</li>
-                <li>See / Küste (Wochenende)</li>
-                <li>Günstiger als Einzelbuchung</li>
-                <li>Kombi mit SRC: 425 €</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Termin anfragen</a>
-            </div>
+        <div class="menu-banner">
+          <img src="assets/yd/yd03-bratwurst.jpg" alt="Brezen-Tablett am Wasser" style="width: 130px; height: 130px; object-fit: cover; border-radius: 4px; flex-shrink: 0;">
+          <div class="menu-banner-text">
+            <h3>Heute gibt&#39;s</h3>
+            <p>Die Karte hängt auf zwei Surfbrettern am Kiosk und wird je nach Tag handgeschrieben angepasst. Hier die typische Auswahl:</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section style="background: var(--sand); padding-top: 80px;">
-      <div class="section-inner">
-        <div class="section-eyebrow">Preise &amp; Pakete</div>
-        <h2 class="section-title">Alle <em>Motorboot-Preise</em></h2>
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <div class="pricing-name">Binnen Motor</div>
-            <div class="pricing-price">130 €</div>
-            <div class="pricing-period">1-Tages-Theoriekurs</div>
-            <div class="pricing-divider"></div>
-            <ul class="pricing-features">
-              <li>Gesetzeskunde Binnen</li>
-              <li>Motorenkunde</li>
-              <li>Wetterkunde</li>
-              <li>09:30 – 16:00 Uhr</li>
+        <div class="menu-grid">
+          <div class="menu-card">
+            <h3>Brotzeit &amp; Warmes</h3>
+            <div class="menu-sub">Klassiker am See</div>
+            <ul class="menu-list">
+              <li><span class="name">Wiener mit Breze</span><span class="price">5,–</span></li>
+              <li><span class="name">Debrecziner mit Breze</span><span class="price">5,50</span></li>
+              <li><span class="name">Bratwurst i.&nbsp;d. Semmel</span><span class="price">6,50</span></li>
+              <li><span class="name">Bratwurst mit Kartoffelsalat</span><span class="price">9,50</span></li>
+              <li><span class="name">Käsekrainer i.&nbsp;d. Semmel</span><span class="price">7,–</span></li>
+              <li><span class="name">Käsekrainer mit Kartoffelsalat</span><span class="price">10,–</span></li>
+              <li><span class="name">Leberkäse in der Semmel</span><span class="price">4,50</span></li>
+              <li><span class="name">Leberkäse mit Kartoffelsalat</span><span class="price">9,–</span></li>
             </ul>
-            <a href="#" onclick="showPage('kontakt')" class="btn btn-outline btn-full">Anfragen</a>
           </div>
-          <div class="pricing-card featured">
-            <div class="pricing-featured-badge">Beliebt</div>
-            <div class="pricing-name">Kombi See + SRC</div>
-            <div class="pricing-price">425 €</div>
-            <div class="pricing-period">Sportbootschein Küste + Seefunk</div>
-            <div class="pricing-divider"></div>
-            <ul class="pricing-features">
-              <li>Sportbootführerschein See</li>
-              <li>SRC Seefunkzeugnis</li>
-              <li>Wochenendkurse</li>
-              <li>Vorbereitung für Offshore</li>
+
+          <div class="menu-card">
+            <h3>Bayrisch &amp; vegetarisch</h3>
+            <div class="menu-sub">Ohne Fleisch geht auch</div>
+            <ul class="menu-list">
+              <li><span class="name">Obatzda mit Breze</span><span class="price">6,50</span></li>
+              <li><span class="name">Pommes mit Tatarensoße</span><span class="price">4,50</span></li>
+              <li><span class="name">Servietten­knödel <span class="desc">mit zerlassener Butter &amp; Parmesan</span></span><span class="price">tba</span></li>
+              <li><span class="name">Wurstsalat mit Baguette</span><span class="price">8,–</span></li>
+              <li><span class="name">Topfenstrudel</span><span class="price">4,80</span></li>
+              <li><span class="name">Croissant Royal <span class="desc">Croissant + Vanillepudding + Apfel</span></span><span class="price">5,–</span></li>
+              <li><span class="name">Süßigkeiten‑Wundertüten</span><span class="price">0,50 / 1,–</span></li>
             </ul>
-            <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Jetzt buchen</a>
           </div>
-          <div class="pricing-card">
-            <div class="pricing-name">Motorbootstunde</div>
-            <div class="pricing-price">80 €</div>
-            <div class="pricing-period">Praxisstunde mit Lehrer</div>
-            <div class="pricing-divider"></div>
-            <ul class="pricing-features">
-              <li>Einzelstunde auf Anfrage</li>
-              <li>Ohne Theoriekurs: 55 € / 30 Min.</li>
-              <li>110 € / 60 Min.</li>
-              <li>Termin nach Vereinbarung</li>
-            </ul>
-            <a href="#" onclick="showPage('kontakt')" class="btn btn-outline btn-full">Anfragen</a>
-          </div>
+        </div>
+
+        <div class="menu-meta" style="text-align: center; margin-top: 32px; max-width: 640px; margin-left: auto; margin-right: auto;">
+          Die Tageskarte kann je nach Saison und Vorrat variieren — die Surfbretter am Kiosk sind die maßgebliche Quelle.
         </div>
       </div>
     </section>
   </div>
 
-  <!-- TAB: PRAXIS -->
-  <div class="tab-content" id="tab-praxis-motor">
+  <!-- TAB: BAGUETTES -->
+  <div class="tab-content" id="tab-baguettes">
     <section>
       <div class="section-inner">
-        <div class="section-eyebrow">Praxisausbildung</div>
-        <h2 class="section-title">Motorboot Praxis <em>am Ammersee</em></h2>
-        <p class="section-lead">Praxisfahrten nach Vereinbarung direkt in Utting. Auf unserem Schulungsmotorboot mit persönlichem Lehrer.</p>
+        <div class="section-eyebrow">Aus dem Ofen</div>
+        <h2 class="section-title">Überbackene <em>Baguettes</em></h2>
+        <p class="section-lead">Frisch belegte halbe Baguettes, im Ofen überbacken — die unkomplizierte Sommer­küche im Strandbad.</p>
 
-        <div class="course-grid">
-          <div class="course-card">
-            <div class="course-card-img">
-              <img src="uploads/Motorboot-Binnen-300x300.jpg" alt="Motorboot Praxis">
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Praxis · Binnen Motor</div>
-              <h3 class="course-card-title">Praxisstunde Motor</h3>
-              <p class="course-card-desc">Gezielte Praxisvorbereitung auf dem Schulungsboot. Einzel- oder Kleingruppenunterricht am Ammersee.</p>
-              <div class="course-card-price">
-                <span class="price-main">80 €</span>
-                <span class="price-unit">pro Stunde</span>
-              </div>
-              <ul class="course-card-features">
-                <li>Praxisfahrten nach Vereinbarung</li>
-                <li>30 Min.: 55 €</li>
-                <li>60 Min.: 110 €</li>
-                <li>Schulungsboot mit Lehrer</li>
-              </ul>
-              <a href="#" onclick="showPage('kontakt')" class="btn btn-primary btn-full">Termin anfragen</a>
-            </div>
+        <div class="menu-grid">
+          <div class="menu-card">
+            <h3>Baguettes</h3>
+            <div class="menu-sub">Vom Holzofen</div>
+            <ul class="menu-list">
+              <li><span class="name">Tomate Mozzarella</span><span class="price">8,–</span></li>
+              <li><span class="name">Schinken Käse</span><span class="price">9,–</span></li>
+              <li><span class="name">Vegan <span class="desc">Zucchini, Auberginen, Tomate</span></span><span class="price">9,–</span></li>
+              <li><span class="name">Hawaii</span><span class="price">9,50</span></li>
+            </ul>
           </div>
-          <div class="course-card">
-            <div class="course-card-img" style="background: linear-gradient(135deg, var(--ocean), var(--navy)); display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 80px;">🤿</span>
-            </div>
-            <div class="course-card-body">
-              <div class="course-card-tag">Praxis · Binnen im Segelkurs</div>
-              <h3 class="course-card-title">Motoranteil im Segelkurs</h3>
-              <p class="course-card-desc">Im Rahmen des Segelkurses wird der Motorbootanteil für den Binnen-Segelschein mit abgedeckt.</p>
-              <div class="course-card-price">
-                <span class="price-main">80 €</span>
-                <span class="price-unit">Aufpreis im Segelkurs</span>
-              </div>
-              <ul class="course-card-features">
-                <li>Kombinierbar mit Segelkurs</li>
-                <li>Im Komplettkurs inklusive</li>
-                <li>Keine extra Kurszeit nötig</li>
-                <li>Direkter Prüfungsanschluss</li>
-              </ul>
-              <a href="#" onclick="showPage('segel')" class="btn btn-outline btn-full">Zu den Segelkursen</a>
-            </div>
+          <div class="menu-card">
+            <h3>Snacks zum Teilen</h3>
+            <div class="menu-sub">Für den Tisch</div>
+            <ul class="menu-list">
+              <li><span class="name">Nachos <span class="desc">mit Käse überbacken &amp; Sweet‑Chicken‑Chili‑Sauce</span></span><span class="price">6,–</span></li>
+            </ul>
+            <div class="menu-meta">Schwankungen je nach Wochentag möglich. Bei Gruppenbestellungen einfach am Kiosk anmelden.</div>
           </div>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- TAB: VERLEIH -->
-  <div class="tab-content" id="tab-verleih-motor">
-    <section class="rental-section">
+  <!-- TAB: DRINKS -->
+  <div class="tab-content" id="tab-drinks">
+    <section>
       <div class="section-inner">
-        <div class="section-eyebrow">Bootsverleih · Utting</div>
-        <h2 class="section-title">Boote <em>mieten</em></h2>
-        <p class="section-lead">Unser Bootsverleih befindet sich direkt neben dem Dampfersteg in Utting – von Ostern bis Mitte November.</p>
-        <div class="rental-table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Boot</th>
-                <th>Wochentag</th>
-                <th>Wochenende</th>
-                <th>Tag (ab 6h)</th>
-                <th>Woche</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Kajütboot Nomade (bis 7 Personen)</td>
-                <td class="price-cell">20 € / Std.</td>
-                <td class="price-cell">25 € / Std.</td>
-                <td class="price-cell">110 € / 140 €</td>
-                <td class="price-cell">500 €</td>
-              </tr>
-              <tr>
-                <td>Elektroboot (bis 6 Personen)</td>
-                <td class="price-cell">40 € / Std.</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-              </tr>
-              <tr>
-                <td>Ruderboot (bis 4 Personen)</td>
-                <td class="price-cell">20 € / Std.</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-              </tr>
-              <tr>
-                <td>Tretboot (bis 5 Personen)</td>
-                <td class="price-cell">20 € / Std.</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-                <td class="price-cell">—</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="rental-info" style="margin-top: 40px;">
-          <div class="rental-info-card">
-            <h4>Reservierung</h4>
-            <p>📱 0152 / 256 639 49<br>WhatsApp &amp; Telegram<br>✉ segelschulemarx@gmail.com</p>
+        <div class="section-eyebrow">Bier, Schorle, Spritz</div>
+        <h2 class="section-title">Bier &amp; <em>Drinks</em></h2>
+        <p class="section-lead">Tegernseer vom Fass, klassische Schorlen und ein paar Spritz‑Ideen aus dem Hauskonzept.</p>
+
+        <div class="menu-grid">
+          <div class="menu-card">
+            <h3>Bier vom Fass</h3>
+            <div class="menu-sub">Tegernseer &amp; Co.</div>
+            <ul class="menu-list">
+              <li><span class="name">Helles Tegernseer</span><span class="price">0,5 ℓ · 4,50</span></li>
+              <li><span class="name">Maß Helles Tegernseer</span><span class="price">1 ℓ · 8,–</span></li>
+              <li><span class="name">Urstoff Weißbier</span><span class="price">0,5 ℓ · 4,50</span></li>
+              <li><span class="name">Radler / Russ&#39;n</span><span class="price">0,5 ℓ · 4,50</span></li>
+            </ul>
           </div>
-          <div class="rental-info-card">
-            <h4>Standort &amp; Saison</h4>
-            <p>Am Dampfersteg, Utting<br>Ostern bis Mitte November<br>Im Sommer bis 19:00 Uhr</p>
+          <div class="menu-card">
+            <h3>Alkoholfreies</h3>
+            <div class="menu-sub">Ohne Alk, mit Sommer</div>
+            <ul class="menu-list">
+              <li><span class="name">Diverse Saftschorlen</span><span class="price">0,5 ℓ · 3,80</span></li>
+              <li><span class="name">Spezi</span><span class="price">0,5 ℓ · 3,80</span></li>
+              <li><span class="name">Wasser</span><span class="price">0,5 ℓ · 2,80</span></li>
+              <li><span class="name">Cola</span><span class="price">0,3 ℓ · 3,–</span></li>
+            </ul>
           </div>
-          <div class="rental-info-card">
-            <h4>Dauerkarten</h4>
-            <p>5er-Karte Kajütboot: <strong>500 €</strong><br>10er-Karte Kajütboot: <strong>900 €</strong></p>
+          <div class="menu-card">
+            <h3>Spritz &amp; Hausmischungen</h3>
+            <div class="menu-sub">Für den langen Abend</div>
+            <ul class="menu-list">
+              <li><span class="name">Spritz <span class="desc">Campari · Aperol · Lillet</span></span><span class="price">0,5 ℓ · 8,–</span></li>
+              <li><span class="name">Venus <span class="desc">Prosecco, Rhabarber, Johannisbeere</span></span><span class="price">7,50</span></li>
+              <li><span class="name">Ammersee Royal <span class="desc">Rum/Gin, Lillet, Cointreau, Ginger Ale</span></span><span class="price">8,50</span></li>
+              <li><span class="name">Satanic Bitch Booster <span class="desc">Geschmack des Hauses · Rum/Gin, Rhabarber, Aperol, Johannisbeere</span></span><span class="price">9,–</span></li>
+              <li><span class="name">Alte Liebe <span class="desc">Prosecco, Waldmeister, Soda</span></span><span class="price">7,50</span></li>
+              <li><span class="name">Rosa Erde <span class="desc">Prosecco, Rose, Soda</span></span><span class="price">7,20</span></li>
+            </ul>
+            <div class="menu-meta">Cocktail‑Karte erweitert sich saisonal — am Tresen jederzeit nachfragen.</div>
           </div>
         </div>
       </div>
     </section>
   </div>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-bottom" style="padding-top: 32px;">
-        <span>© 2026 Segelschule Marx · Seestraße 17, 86919 Utting · 08806 / 7704</span>
-        <div style="display: flex; gap: 24px;">
-          <a href="#" onclick="showPage('home')">Startseite</a>
-          <a href="#" onclick="showPage('kontakt')">Kontakt</a>
+  <!-- TAB: KAFFEE -->
+  <div class="tab-content" id="tab-kaffee">
+    <section>
+      <div class="section-inner">
+        <div class="about-grid">
+          <div class="about-img">
+            <img src="assets/yd/yd07-kaffee.jpg" alt="Kaffeebar im Strandbad Utting" style="height: 460px;">
+          </div>
+          <div class="about-text">
+            <div class="section-eyebrow">Kaffeebar</div>
+            <h2 class="section-title">Kaffee mit <em>Aussicht</em></h2>
+            <p>Die Kaffeebar gehört seit der neuen Saison fest zum Konzept — direkt am Kiosk, mit Blick aufs Wasser. Espresso aus der Maschine, Cappuccino am Vormittag, Eiskaffee am Nachmittag.</p>
+
+            <div class="menu-card" style="margin-top: 20px; padding: 24px;">
+              <h3 style="margin-bottom: 16px;">Kaffee &amp; Heißgetränke</h3>
+              <ul class="menu-list">
+                <li><span class="name">Espresso</span><span class="price">2,–</span></li>
+                <li><span class="name">Doppio</span><span class="price">2,80</span></li>
+                <li><span class="name">Cappuccino</span><span class="price">3,20</span></li>
+                <li><span class="name">Latte</span><span class="price">3,50</span></li>
+                <li><span class="name">Lungo / Filter</span><span class="price">2,80</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- TAB: EIS -->
+  <div class="tab-content" id="tab-eis">
+    <section>
+      <div class="section-inner">
+        <div class="about-grid" style="grid-template-columns: 1.1fr 1fr;">
+          <div class="about-text">
+            <div class="section-eyebrow">Langnese am See</div>
+            <h2 class="section-title">Jetzt ein <em>Eis</em></h2>
+            <p>Klassische Sommerbild­reihe: Eistafel am Kiosk, Sprungturm und See im Hintergrund. Die Auswahl wechselt mit dem Jahr — ungefähre Preise:</p>
+
+            <div class="menu-card" style="margin-top: 18px; padding: 24px;">
+              <h3 style="margin-bottom: 16px;">Eis (Auswahl)</h3>
+              <ul class="menu-list">
+                <li><span class="name">Magnum Classic</span><span class="price">3,50</span></li>
+                <li><span class="name">Magnum Mini</span><span class="price">3,50</span></li>
+                <li><span class="name">Cornetto</span><span class="price">3,30</span></li>
+                <li><span class="name">Nogger Choc</span><span class="price">3,–</span></li>
+                <li><span class="name">Solero</span><span class="price">3,50</span></li>
+                <li><span class="name">Flutschfinger</span><span class="price">2,20</span></li>
+                <li><span class="name">SPLiT</span><span class="price">2,80</span></li>
+                <li><span class="name">Riesen Happen</span><span class="price">2,80</span></li>
+              </ul>
+              <div class="menu-meta">Sortiment laut Langnese‑Tafel — Verfügbarkeit kann je nach Tag variieren.</div>
+            </div>
+          </div>
+          <div class="about-img">
+            <img src="assets/photos/eis.jpg" alt="Langnese Eistafel mit Sprungturm im Hintergrund" style="height: 540px;">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ORIGINAL MENU PHOTOS -->
+  <section style="background: var(--paper); padding-top: 64px; padding-bottom: 80px;">
+    <div class="section-inner">
+      <div class="section-eyebrow">Originalkarte</div>
+      <h2 class="section-title">Surfbretter am <em>Kiosk</em></h2>
+      <p class="section-lead">So hängt die Karte tatsächlich am Strandbad: drei Surfbretter, handgeschrieben, jede Saison neu.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+        <figure style="border-radius: 4px; overflow: hidden; box-shadow: 0 8px 32px rgba(12,31,42,0.10);">
+          <img src="assets/photos/sommerkarte-poster.jpg" alt="Sommerkarte Strandbad Utting auf Surfbrettern">
+        </figure>
+        <figure style="border-radius: 4px; overflow: hidden; box-shadow: 0 8px 32px rgba(12,31,42,0.10);">
+          <img src="assets/photos/sommerkarte.jpg" alt="Sommerkarte Detailaufnahme">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <h3>Hunger? Durst? See?</h3>
+    <p>Bei gutem Wetter ist die Küche bis 22 Uhr für Sie da — der Biergarten oft länger.</p>
+    <div class="cta-btns">
+      <a class="btn btn-white" onclick="showPage('kontakt')">Anfahrt &amp; Reservierung</a>
+      <a class="btn btn-ghost" onclick="showPage('strandbad')">Strandbad ansehen</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: GESCHICHTE
+     ═══════════════════════════════════════ -->
+<div class="page" id="page-geschichte">
+  <div class="page-hero">
+    <img src="assets/yd/yd02-evening.jpg" alt="Strandbad Utting bei Abendlicht">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Geschichte · Tradition · Neustart</div>
+      <h1 class="page-hero-title">Fast 100&nbsp;<em>Jahre</em></h1>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img">
+          <img src="assets/photos/lake-tree.jpg" alt="Alter Baum im Strandbad Utting">
+          <div class="about-img-badge">
+            <div class="year">2029</div>
+            <div class="year-label">100‑jähriges Jubiläum</div>
+          </div>
+        </div>
+        <div class="about-text">
+          <div class="section-eyebrow">Sommerinstitut am Ammersee</div>
+          <h2 class="section-title">Tradition <em>schützen</em>, Leichtigkeit <em>halten</em></h2>
+          <p>Das Strandbad Utting ist seit fast einem Jahrhundert mit dem Ort verwurzelt. Eine kleine Bucht, ein langes Holzdeck, der unverwechselbare Sprungturm — Generationen aus Utting und vom ganzen See haben hier ihre Sommer verbracht.</p>
+          <p>Teile des Ensembles sind <strong>denkmalgeschützt</strong>. Die jüngsten Investitionen in Küche und Gastronomie zielen auf besseren Betrieb, ohne den Charakter zu verwässern.</p>
+          <p>2029 wird das Strandbad <strong>100 Jahre alt</strong>. Bis dahin schreibt das Team rund um Pächter Miene Gruber das nächste Kapitel.</p>
         </div>
       </div>
     </div>
-  </footer>
+  </section>
+
+  <section style="background: var(--white);">
+    <div class="section-inner">
+      <div class="section-eyebrow">Neustart 2025</div>
+      <h2 class="section-title">Frische Küche, <em>klare Atmosphäre</em></h2>
+      <p class="section-lead">Mit dem Pächter­wechsel 2025 wurde die Gastronomie technisch und konzeptionell modernisiert: das „Blaue Haus&#39;&#39; entkernt, neue Elektrik, Hochwasserschutz, eine neue Küche als Herzstück. Ziel: Saisonstart zum 1. Mai, Biergarten als bleibender Treffpunkt — nicht nur als Nebenangebot.</p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>Pächter Miene Gruber</h4>
+          <p>Martin „Miene&#39;&#39; Gruber führt das Strandbad seit der Saison 2025. Pachtvertrag über zehn Saisons, perspektivisch sogar mit eingeschränktem Winterbetrieb gedacht.</p>
+        </div>
+        <div class="info-card">
+          <h4>Erneuerte Küche</h4>
+          <p>Das Gastronomie­gebäude wurde umfangreich modernisiert — vom Innenausbau über die Elektrik bis zum Hochwasserschutz. Die neue Küche ist seit Saison­beginn das Herzstück.</p>
+        </div>
+        <div class="info-card">
+          <h4>Biergarten als Konzept</h4>
+          <p>Rund 100 Plätze, Außenbereich unter alten Bäumen, lange Sommer­abende. Der Biergarten ist nicht „Beiwerk zum Bad&#39;&#39; — er ist ein eigener Ort.</p>
+        </div>
+        <div class="info-card">
+          <h4>Sprungturm bleibt Marke</h4>
+          <p>Der 10‑Meter‑Turm ist Wahrzeichen und wird weiterhin als das gepflegt: das Stück Utting, das man vom Schiff aus erkennt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-section">
+    <div class="section-inner">
+      <div class="band-grid">
+        <img src="assets/yd/yd11-crowd-water.jpg" alt="Menschen am Wasser im Strandbad Utting">
+        <div>
+          <div class="section-eyebrow">Mehr als ein Bad</div>
+          <h2 class="section-title">Ammersee­gefühl, ehrlich <em>und nah</em></h2>
+          <p>Die Spannung zwischen „Strandbad mit Gastronomie&#39;&#39; und „Gastronomie mit Strandbad&#39;&#39; ist hier alt. Wir lösen sie nicht durch eine Marketing­geschichte, sondern durch das Tun: Bad, Turm, Biergarten, Küche und Kaffeebar — alles unter einem Dach, alles am See.</p>
+          <p>Wer einmal hier war, kommt meistens wieder. Das ist das ganze Konzept.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <h3>Vorbeischauen lohnt sich</h3>
+    <p>Bei gutem Wetter geöffnet — Saison 2026 ab 1. Mai.</p>
+    <div class="cta-btns">
+      <a class="btn btn-white" onclick="showPage('kontakt')">Anfahrt &amp; Kontakt</a>
+      <a class="btn btn-ghost" onclick="showPage('sommerkarte')">Sommerkarte</a>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════
      PAGE: KONTAKT
      ═══════════════════════════════════════ -->
 <div class="page" id="page-kontakt">
-  <div class="page-hero" style="height: 320px;">
-    <img src="uploads/Wir-ueber-uns-1024x680.jpg" alt="Segelschule Marx Kontakt">
+  <div class="page-hero">
+    <img src="assets/photos/seating-night.jpg" alt="Strandbad Utting Sitzplätze bei Nacht">
     <div class="page-hero-overlay"></div>
     <div class="page-hero-content">
-      <div class="page-hero-eyebrow">Segelschule Marx · Utting am Ammersee</div>
-      <h1 class="page-hero-title"><em>Kontakt</em> &amp; Anfahrt</h1>
+      <div class="page-hero-eyebrow">Anfahrt · Kontakt · Karte</div>
+      <h1 class="page-hero-title">So <em>finden Sie uns</em></h1>
     </div>
   </div>
 
   <section>
     <div class="section-inner">
       <div class="kontakt-grid">
-        <div>
-          <div class="section-eyebrow">Direkt erreichen</div>
-          <h2 class="section-title">Sprechen Sie<br><em>mit uns</em></h2>
-          <div class="kontakt-info">
-            <div class="kontakt-item">
-              <div class="kontakt-icon">📞</div>
-              <div class="kontakt-item-text">
-                <h4>Telefon</h4>
-                <p>
-                  Büro / Segelschule: <a href="tel:088067704"><strong>08806 / 7704</strong></a><br>
-                  Mobil / Bootsverleih: <a href="tel:015225663949"><strong>0152 / 256 639 49</strong></a>
-                </p>
-              </div>
-            </div>
-            <div class="kontakt-item">
-              <div class="kontakt-icon">💬</div>
-              <div class="kontakt-item-text">
-                <h4>WhatsApp &amp; Telegram</h4>
-                <p>
-                  <a href="https://wa.me/491522566394" target="_blank"><strong>0152 / 256 639 49</strong></a><br>
-                  Schnelle Antworten für Reservierungen
-                </p>
-              </div>
-            </div>
-            <div class="kontakt-item">
-              <div class="kontakt-icon">✉️</div>
-              <div class="kontakt-item-text">
-                <h4>E-Mail</h4>
-                <p><a href="mailto:segelschulemarx@gmail.com"><strong>segelschulemarx@gmail.com</strong></a></p>
-              </div>
-            </div>
-            <div class="kontakt-item">
-              <div class="kontakt-icon">📍</div>
-              <div class="kontakt-item-text">
-                <h4>Adresse</h4>
-                <p>
-                  Segelschule Klaus und Michael Marx<br>
-                  Seestraße 17<br>
-                  86919 Utting am Ammersee<br><br>
-                  <strong>Navigation:</strong> Seestraße 15 eingeben<br>
-                  Im Sommer Zufahrt über Ortskern Utting<br>
-                  Steg: Schildern zum Dampfersteg folgen
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="kontakt-map">
-            <img src="uploads/pasted-1777650061738-0.png" alt="Anfahrtskarte Segelschule Marx, Seestraße 17, Utting am Ammersee" style="width: 100%; height: 480px; object-fit: cover; object-position: center; display: block;">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="kontakt-info">
+          <div class="section-eyebrow">Direkt am See</div>
+          <h2 class="section-title">Strandbad <em>Utting</em></h2>
+          <p style="font-size: 16px; color: var(--text-soft); line-height: 1.8; margin-bottom: 8px;">Wir liegen in der kleinen Bucht zwischen Bootshäusern und Sprungturm — vom Bahnhof Utting in 10 bis 15 Minuten zu Fuß.</p>
 
-  <!-- CONTACT FORM -->
-  <section style="background: var(--sand); padding-top: 80px;">
-    <div class="section-inner">
-      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start;">
-        <div>
-          <div class="section-eyebrow">Kursanfrage</div>
-          <h2 class="section-title">Kurs <em>anfragen</em></h2>
-          <p style="font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 24px;">Wir antworten schnell – per Telefon, WhatsApp oder E-Mail. Wählen Sie einfach das Angebot aus und schreiben uns kurz.</p>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <a href="tel:088067704" class="btn btn-primary" style="justify-content: flex-start;">📞 &nbsp; 08806 / 7704</a>
-            <a href="https://wa.me/491522566394" target="_blank" class="btn btn-outline" style="justify-content: flex-start;">💬 &nbsp; WhatsApp schreiben</a>
-            <a href="mailto:segelschulemarx@gmail.com" class="btn btn-outline" style="justify-content: flex-start;">✉ &nbsp; E-Mail senden</a>
+          <div class="kontakt-item">
+            <div class="kontakt-icon">📍</div>
+            <div class="kontakt-item-text">
+              <h4>Adresse</h4>
+              <p>Seestraße 12a<br>86919 Utting am Ammersee<br>Bayern · Deutschland</p>
+            </div>
+          </div>
+          <div class="kontakt-item">
+            <div class="kontakt-icon">📞</div>
+            <div class="kontakt-item-text">
+              <h4>Telefon</h4>
+              <p><a href="tel:+4988067680">08806 / 7680</a></p>
+            </div>
+          </div>
+          <div class="kontakt-item">
+            <div class="kontakt-icon">✉️</div>
+            <div class="kontakt-item-text">
+              <h4>E‑Mail</h4>
+              <p><a href="mailto:info@strandbadutting.de">info@strandbadutting.de</a></p>
+            </div>
+          </div>
+          <div class="kontakt-item">
+            <div class="kontakt-icon">📷</div>
+            <div class="kontakt-item-text">
+              <h4>Instagram</h4>
+              <p><a href="https://www.instagram.com/strandbad_utting/" target="_blank" rel="noopener">@strandbad_utting</a></p>
+            </div>
+          </div>
+          <div class="kontakt-item">
+            <div class="kontakt-icon">🚆</div>
+            <div class="kontakt-item-text">
+              <h4>Mit der Bahn</h4>
+              <p>Bahnhof Utting (KBS München – Weilheim) · ca. 10–15 Min Fußweg zum See.</p>
+            </div>
+          </div>
+          <div class="kontakt-item">
+            <div class="kontakt-icon">🚗</div>
+            <div class="kontakt-item-text">
+              <h4>Auto &amp; Parken</h4>
+              <p>Parkplätze in Utting Richtung See — an Sommer­tagen ist es voll, frühes Kommen lohnt sich.</p>
+            </div>
+          </div>
+          <div class="kontakt-item">
+            <div class="kontakt-icon">🚲</div>
+            <div class="kontakt-item-text">
+              <h4>Mit dem Rad</h4>
+              <p>Direkt am Ammersee‑Radweg — Stellflächen am Eingang.</p>
+            </div>
           </div>
         </div>
+
         <div class="contact-form">
-          <h3>Nachricht senden</h3>
+          <h3>Kurz schreiben</h3>
           <div class="form-row">
             <div class="form-group">
               <label>Vorname</label>
-              <input type="text" placeholder="Ihr Vorname">
+              <input type="text" placeholder="Vorname">
             </div>
             <div class="form-group">
               <label>Nachname</label>
-              <input type="text" placeholder="Ihr Nachname">
+              <input type="text" placeholder="Nachname">
             </div>
           </div>
           <div class="form-group">
-            <label>E-Mail</label>
+            <label>E‑Mail</label>
             <input type="email" placeholder="ihre@email.de">
           </div>
           <div class="form-group">
-            <label>Interesse</label>
+            <label>Anlass</label>
             <select>
-              <option>Segelschein Binnen</option>
-              <option>Motorbootschein Binnen</option>
-              <option>Motorbootschein See</option>
-              <option>SKS / SRC</option>
-              <option>Kinderkurs</option>
-              <option>Bootsverleih</option>
-              <option>Eventsegeln Bavaria 34</option>
-              <option>Segeltörn Adria</option>
-              <option>Schnuppersegeln</option>
+              <option>Allgemeine Anfrage</option>
+              <option>Tisch / Gruppe im Biergarten</option>
+              <option>Geburtstag / Feier</option>
+              <option>Saisonkarte 2026</option>
+              <option>Presse / Kooperation</option>
               <option>Sonstiges</option>
             </select>
           </div>
           <div class="form-group">
             <label>Nachricht</label>
-            <textarea placeholder="Ihre Fragen oder Terminwünsche..."></textarea>
+            <textarea placeholder="Worum geht's? Wann hätten Sie es gerne?"></textarea>
           </div>
-          <button class="btn btn-primary btn-full" onclick="this.textContent='✓ Gesendet – wir melden uns bald!'; this.disabled=true; this.style.background='#2e7fb8';">
+          <button class="btn btn-primary btn-full" onclick="this.textContent='✓ Gesendet — wir melden uns bald!'; this.disabled=true; this.style.background='var(--sea)';">
             Nachricht senden
           </button>
+          <p style="font-size: 12px; color: var(--text-soft); margin-top: 14px; line-height: 1.5;">Demoformular — schickt aktuell keine echte Mail. Schnellste Antwort: per Telefon oder direkt am Eingang.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ANFAHRT HINWEIS -->
-  <section style="background: var(--navy); padding: 64px 48px;">
+  <section style="background: var(--paper); padding-top: 0;">
     <div class="section-inner">
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
-        <div>
-          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 12px;">Anfahrt Schulgebäude</div>
-          <p style="font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7;">Im Sommer (Mai–Oktober): Zufahrt über den Ortskern Utting. Navigation: <strong style="color: var(--white);">„86919 Utting, Seestraße 15"</strong></p>
-        </div>
-        <div>
-          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 12px;">Steg &amp; Bootsverleih</div>
-          <p style="font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7;">Schildern zum <strong style="color: var(--white);">Dampfersteg</strong> folgen. Parken am Bahnhof Utting, ca. 250 m bis zum See.</p>
-        </div>
-        <div>
-          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 12px;">Öffentliche Verkehrsmittel</div>
-          <p style="font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7;">S-Bahn bis <strong style="color: var(--white);">Bahnhof Utting</strong>, dann ca. 5 Minuten zu Fuß zum Steg.</p>
-        </div>
+      <div class="kontakt-map">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Karte: Strandbad Utting, Seestraße 12a, 86919 Utting am Ammersee"
+          src="https://maps.google.com/maps?q=Strandbad+Utting+Seestra%C3%9Fe+12a+86919+Utting+am+Ammersee&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-bottom" style="padding-top: 32px;">
-        <span>© 2026 Segelschule Marx · Seestraße 17, 86919 Utting · 08806 / 7704</span>
-        <div style="display: flex; gap: 24px;">
-          <a href="#" onclick="showPage('home')">Startseite</a>
-          <a href="#">Datenschutz</a>
-          <a href="#">Impressum</a>
+  <section style="background: var(--night); color: rgba(255,255,255,0.7);">
+    <div class="section-inner">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px;">
+        <div>
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sun-light); margin-bottom: 12px;">Im Sommer</div>
+          <p style="font-size: 14px; line-height: 1.7;">Bei gutem Wetter (ab 15&nbsp;°C, Sonne) <strong style="color: var(--white);">täglich 10:00 – 22:00</strong>. Sprungturm mit Aufsicht, Biergarten oft länger geöffnet.</p>
+        </div>
+        <div>
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sun-light); margin-bottom: 12px;">Saisonstart 2026</div>
+          <p style="font-size: 14px; line-height: 1.7;"><strong style="color: var(--white);">1. Mai 2026 — Tanz in den Mai mit Bluekilla</strong>, ab 20:00 Uhr live im Strandbad.</p>
+        </div>
+        <div>
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sun-light); margin-bottom: 12px;">Schnelle Wege</div>
+          <p style="font-size: 14px; line-height: 1.7;">Telefon zu Öffnungszeiten · Instagram @strandbad_utting für Tagesstatus · Mail für längere Anfragen.</p>
         </div>
       </div>
     </div>
-  </footer>
+  </section>
 </div>
 
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand-name">Strandbad Utting</div>
+        <div class="brand-sub">Am Ammersee · Bayern</div>
+        <p>Freibad mit 10‑Meter‑Sprungturm, Liegewiese und Biergarten — direkt am Ammersee in Utting. Bei gutem Wetter täglich offen.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Erleben</h5>
+        <ul>
+          <li><a onclick="showPage('strandbad')">Strandbad &amp; Bucht</a></li>
+          <li><a onclick="showPage('strandbad'); setTimeout(()=>setTab('sprungturm'),100)">Sprungturm</a></li>
+          <li><a onclick="showPage('sommerkarte')">Sommerkarte</a></li>
+          <li><a onclick="showPage('sommerkarte'); setTimeout(()=>setTab('kaffee'),100)">Kaffeebar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Über uns</h5>
+        <ul>
+          <li><a onclick="showPage('geschichte')">Geschichte</a></li>
+          <li><a onclick="showPage('geschichte')">Pächter Miene Gruber</a></li>
+          <li><a href="https://www.instagram.com/strandbad_utting/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a onclick="showPage('kontakt')">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="tel:+4988067680">08806 / 7680</a></li>
+          <li><a href="mailto:info@strandbadutting.de">info@strandbadutting.de</a></li>
+          <li><a onclick="showPage('kontakt')">Anfahrt</a></li>
+          <li><a>Seestraße 12a · 86919 Utting</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Strandbad Utting · Pächter Martin „Miene&#39;&#39; Gruber · Seestraße 12a, 86919 Utting am Ammersee</span>
+      <div style="display: flex; gap: 24px;">
+        <a onclick="showPage('kontakt')">Datenschutz</a>
+        <a onclick="showPage('kontakt')">Impressum</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script>
-  // Set video speed
-  const vid = document.getElementById('heroVideo');
-  if (vid) { vid.playbackRate = 0.5; }
-
-  // Nav scroll
-  window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  // Page navigation
-  function showPage(id) {
+  // ── Page navigation ──
+  function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + id).classList.add('active');
-    // Reset tab states for inner pages
-    if (id === 'segel') {
-      document.querySelectorAll('#page-segel .tab-btn').forEach((b,i) => b.classList.toggle('active', i===0));
-      document.querySelectorAll('#page-segel .tab-content').forEach((c,i) => c.classList.toggle('active', i===0));
-    }
-    if (id === 'motor') {
-      document.querySelectorAll('#page-motor .tab-btn').forEach((b,i) => b.classList.toggle('active', i===0));
-      document.querySelectorAll('#page-motor .tab-content').forEach((c,i) => c.classList.toggle('active', i===0));
-    }
-    window.scrollTo({top: 0, behavior: 'smooth'});
-    // Update nav active state
+    var page = document.getElementById('page-' + name);
+    if (page) page.classList.add('active');
+
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    const navEl = document.getElementById('nav-' + id);
-    if (navEl) navEl.classList.add('active');
-    return false;
+    var navLink = document.getElementById('nav-' + name);
+    if (navLink) navLink.classList.add('active');
+
+    document.getElementById('mainNav').classList.remove('open');
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
   }
 
-  // Tab navigation
+  // ── Tabs (scoped per group) ──
   function setTab(tabId) {
-    const tab = document.getElementById('tab-' + tabId);
-    if (!tab) return;
-    const page = tab.closest('.page');
-    // Deactivate all tabs in this page
-    page.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    page.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    // Activate the correct tab
-    tab.classList.add('active');
-    const tabs = Array.from(page.querySelectorAll('.tab-content'));
-    const idx = tabs.indexOf(tab);
-    page.querySelectorAll('.tab-btn')[idx].classList.add('active');
-    // Scroll to top of tabs
-    const tabsNav = page.querySelector('.tabs-nav');
-    if (tabsNav) {
-      const top = tabsNav.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({top, behavior: 'smooth'});
-    }
+    var btn = document.querySelector('.tab-btn[onclick*="\'' + tabId + '\'"]');
+    if (!btn) return;
+    var group = btn.dataset.group;
+    document.querySelectorAll('.tab-btn[data-group="' + group + '"]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var groupTabs = btn.closest('.page').querySelectorAll('.tab-content');
+    groupTabs.forEach(t => t.classList.remove('active'));
+    var target = document.getElementById('tab-' + tabId);
+    if (target) target.classList.add('active');
   }
+
+  // ── Mobile nav toggle ──
+  function toggleNav() {
+    document.getElementById('mainNav').classList.toggle('open');
+  }
+
+  // ── Nav scrolled state ──
+  window.addEventListener('scroll', function () {
+    var nav = document.getElementById('mainNav');
+    if (window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }, { passive: true });
+
+  // ── Close mobile nav after click ──
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'));
+  });
 </script>
+
 </body>
 </html>
